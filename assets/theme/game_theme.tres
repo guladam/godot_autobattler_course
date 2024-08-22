@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dfwyixi7xkn7k"]
+
+[ext_resource type="FontFile" uid="uid://wqfms7k4ykv2" path="res://assets/font/abaddon_bold.ttf" id="1_3ngq6"]
+
+[resource]
+default_font = ExtResource("1_3ngq6")
