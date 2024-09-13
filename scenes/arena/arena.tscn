@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://btsdfk3w6ejf7"]
+[gd_scene load_steps=8 format=4 uid="uid://btsdfk3w6ejf7"]
 
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
+[ext_resource type="Script" path="res://scenes/arena/arena.gd" id="1_p34ty"]
 [ext_resource type="Texture2D" uid="uid://mbxv0ayrsu3d" path="res://assets/sprites/star_particle.png" id="2_3p7kb"]
+[ext_resource type="PackedScene" uid="uid://dctbclookhob7" path="res://scenes/unit/unit.tscn" id="4_d4agj"]
 
 [sub_resource type="Curve" id="Curve_gxqt7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.204482, 1), 0.0, 0.0, 0, 0, Vector2(0.795518, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -26,6 +28,7 @@ scale_curve = SubResource("CurveTexture_5sum6")
 color = Color(1, 1, 1, 0.494118)
 
 [node name="Arena" type="Node2D"]
+script = ExtResource("1_p34ty")
 metadata/_edit_lock_ = true
 
 [node name="Visuals" type="Node2D" parent="."]
@@ -37,6 +40,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAYAAAAAAAEAAAAAAAYAAAAAAAIAAAAAAAY
 tile_set = ExtResource("1_64ph8")
 
 [node name="Props" type="TileMapLayer" parent="Visuals"]
+modulate = Color(1, 1, 1, 0.392157)
 tile_map_data = PackedByteArray("AAAAAAAAAAAMABMAAAABAAIAAAADABMAAAABAAQAAAABABMAAAABAAUAAAABABMAAAABAAkAAAAAABMAAAABAAoAAAAKABMAAAAQAAMAAAAJABMAAAAQAAQAAAAKABMAAAARAAkAAAAGABMAAAASAAEAAAAJABMAAAASAAgAAAAGABMAAAATAAAAAAANABMAAAATAAgAAAAHABMAAAA=")
 tile_set = ExtResource("1_64ph8")
 
@@ -60,6 +64,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Decor" type="TileMapLayer" parent="GameArea"]
+modulate = Color(1, 1, 1, 0.431373)
 tile_map_data = PackedByteArray("AAAGAAAAAAABABUAAAAJAAEAAAAAABYAAAAIAAQAAAABABYAAAA=")
 tile_set = ExtResource("1_64ph8")
 
@@ -74,5 +79,13 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Highlight" type="TileMapLayer" parent="Bench"]
-position = Vector2(160, 32)
 tile_set = ExtResource("1_64ph8")
+
+[node name="Unit" parent="Bench" instance=ExtResource("4_d4agj")]
+position = Vector2(32, -160)
+
+[node name="Unit2" parent="Bench" instance=ExtResource("4_d4agj")]
+position = Vector2(64, -160)
+
+[node name="Unit3" parent="Bench" instance=ExtResource("4_d4agj")]
+position = Vector2(128, -160)
