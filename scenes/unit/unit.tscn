@@ -78,7 +78,7 @@ target = NodePath("..")
 script = ExtResource("5_rio0o")
 target = NodePath("../Visuals/Skin")
 lerp_seconds = 0.3
-rotation_multiplier = 40
+max_rotation_degrees = 30
 
 [node name="OutlineHighlighter" type="Node" parent="." node_paths=PackedStringArray("visuals")]
 script = ExtResource("7_w1ko1")
