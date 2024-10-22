@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3 uid="uid://47wo0eppmuth"]
+
+[ext_resource type="Script" path="res://data/units/unit_stats.gd" id="1_fyrnm"]
+
+[resource]
+script = ExtResource("1_fyrnm")
+name = "Robin"
+rarity = 0
+gold_cost = 1
+skin_coordinates = Vector2i(2, 0)
