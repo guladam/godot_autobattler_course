@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://components/play_area.gd" id="4_nfvuo"]
 [ext_resource type="Script" path="res://components/unit_grid.gd" id="4_o6kfo"]
 [ext_resource type="Script" path="res://components/tile_highlighter.gd" id="6_0fpan"]
+
 [ext_resource type="Resource" uid="uid://47wo0eppmuth" path="res://data/units/robin.tres" id="8_3ad30"]
 [ext_resource type="Resource" uid="uid://cxt8jraate1vr" path="res://data/units/arthur.tres" id="8_nctb4"]
 [ext_resource type="Script" path="res://components/unit_mover.gd" id="8_pf53d"]
