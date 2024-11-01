@@ -7,4 +7,5 @@ script = ExtResource("1_dy7fj")
 name = "Arthur"
 rarity = 2
 gold_cost = 4
+tier = 1
 skin_coordinates = Vector2i(4, 2)

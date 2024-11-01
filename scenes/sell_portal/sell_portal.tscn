@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://by3h7pasink2e"]
+
+[ext_resource type="Script" path="res://scenes/sell_portal/sell_portal.gd" id="1_6nb52"]
+[ext_resource type="Material" uid="uid://bb8m5fhpi4wqn" path="res://assets/shaders/2d_outline_shader.tres" id="1_gkboq"]
+[ext_resource type="Texture2D" uid="uid://b1ro1ssup7dcp" path="res://assets/sprites/tiles.png" id="2_5jae0"]
+[ext_resource type="Script" path="res://components/outline_highlighter.gd" id="3_suc53"]
+[ext_resource type="Texture2D" uid="uid://c4awhqfup7o2k" path="res://assets/sprites/gold.png" id="4_kgotn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_11ciw"]
+radius = 24.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_iht2i"]
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.627451)
+
+[node name="SellPortal" type="Area2D"]
+script = ExtResource("1_6nb52")
+
+[node name="Visuals" type="CanvasGroup" parent="."]
+material = ExtResource("1_gkboq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+position = Vector2(16, 16)
+texture = ExtResource("2_5jae0")
+region_enabled = true
+region_rect = Rect2(224, 512, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+shape = SubResource("CircleShape2D_11ciw")
+
+[node name="OutlineHighlighter" type="Node" parent="." node_paths=PackedStringArray("visuals")]
+script = ExtResource("3_suc53")
+visuals = NodePath("../Visuals")
+outline_color = Color(0.556863, 0.913725, 0.745098, 1)
+outline_thickness = 2
+
+[node name="Label" type="Label" parent="."]
+offset_top = 36.0
+offset_right = 32.0
+offset_bottom = 54.0
+text = "sell"
+label_settings = SubResource("LabelSettings_iht2i")
+horizontal_alignment = 1
+
+[node name="Gold" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_top = 52.0
+offset_right = 32.0
+offset_bottom = 70.0
+alignment = 1
+
+[node name="GoldLabel" type="Label" parent="Gold"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "99"
+label_settings = SubResource("LabelSettings_iht2i")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Gold"]
+custom_minimum_size = Vector2(9, 0)
+layout_mode = 2
+texture = ExtResource("4_kgotn")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

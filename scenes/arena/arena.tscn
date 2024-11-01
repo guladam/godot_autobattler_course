@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://btsdfk3w6ejf7"]
+[gd_scene load_steps=17 format=4 uid="uid://btsdfk3w6ejf7"]
 
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
 [ext_resource type="Script" path="res://scenes/arena/arena.gd" id="1_p34ty"]
@@ -12,6 +12,8 @@
 [ext_resource type="Resource" uid="uid://cxt8jraate1vr" path="res://data/units/arthur.tres" id="8_nctb4"]
 [ext_resource type="Script" path="res://components/unit_mover.gd" id="8_pf53d"]
 [ext_resource type="Script" path="res://components/unit_spawner.gd" id="11_323go"]
+[ext_resource type="PackedScene" uid="uid://by3h7pasink2e" path="res://scenes/sell_portal/sell_portal.tscn" id="12_jfrdp"]
+[ext_resource type="Resource" uid="uid://cond60csmn6l4" path="res://data/player/player_stats.tres" id="13_jdvan"]
 
 [sub_resource type="Curve" id="Curve_gxqt7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.204482, 1), 0.0, 0.0, 0, 0, Vector2(0.795518, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -127,6 +129,10 @@ enabled = false
 play_area = NodePath("..")
 highlight_layer = NodePath("../Highlight")
 tile = Vector2i(3, 0)
+
+[node name="SellPortal" parent="." instance=ExtResource("12_jfrdp")]
+position = Vector2(80, 288)
+player_stats = ExtResource("13_jdvan")
 
 [node name="UnitMover" type="Node" parent="." node_paths=PackedStringArray("play_areas")]
 script = ExtResource("8_pf53d")
