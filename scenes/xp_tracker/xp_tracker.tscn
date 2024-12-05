@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvx14fe4jsna5"]
+
+[ext_resource type="FontFile" uid="uid://8di0jvr25vat" path="res://assets/font/m5x7.ttf" id="1_hrngp"]
+[ext_resource type="Script" path="res://scenes/xp_tracker/xp_tracker.gd" id="1_lwcdx"]
+[ext_resource type="Resource" uid="uid://cond60csmn6l4" path="res://data/player/player_stats.tres" id="2_ti1gd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6t03"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkaas"]
+bg_color = Color(0.337255, 0.635294, 0.882353, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_viagu"]
+font = ExtResource("1_hrngp")
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.701961)
+
+[node name="XPTracker" type="VBoxContainer"]
+custom_minimum_size = Vector2(70, 28)
+offset_right = 70.0
+offset_bottom = 28.0
+theme_override_constants/separation = 0
+alignment = 1
+script = ExtResource("1_lwcdx")
+player_stats = ExtResource("2_ti1gd")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_l6t03")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wkaas")
+value = 60.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="XPLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "99/99"
+label_settings = SubResource("LabelSettings_viagu")
+
+[node name="LevelLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "lvl: 1"
+label_settings = SubResource("LabelSettings_viagu")
+horizontal_alignment = 2
