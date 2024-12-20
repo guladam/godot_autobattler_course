@@ -7,13 +7,12 @@
 [ext_resource type="Script" path="res://components/play_area.gd" id="4_nfvuo"]
 [ext_resource type="Script" path="res://components/unit_grid.gd" id="4_o6kfo"]
 [ext_resource type="Script" path="res://components/tile_highlighter.gd" id="6_0fpan"]
-
 [ext_resource type="Resource" uid="uid://47wo0eppmuth" path="res://data/units/robin.tres" id="8_3ad30"]
+[ext_resource type="Resource" uid="uid://ddjdrido7fjsw" path="res://data/units/bjorn_test.tres" id="8_40d7b"]
 [ext_resource type="Resource" uid="uid://cxt8jraate1vr" path="res://data/units/arthur.tres" id="8_nctb4"]
 [ext_resource type="Script" path="res://components/unit_mover.gd" id="8_pf53d"]
 [ext_resource type="Script" path="res://components/unit_spawner.gd" id="11_323go"]
 [ext_resource type="PackedScene" uid="uid://by3h7pasink2e" path="res://scenes/sell_portal/sell_portal.tscn" id="12_jfrdp"]
-[ext_resource type="Resource" uid="uid://cond60csmn6l4" path="res://data/player/player_stats.tres" id="13_jdvan"]
 [ext_resource type="PackedScene" uid="uid://8gnysrx0alpt" path="res://scenes/shop/shop.tscn" id="14_l7l4v"]
 
 [sub_resource type="Curve" id="Curve_gxqt7"]
@@ -111,6 +110,7 @@ tile_set = ExtResource("1_64ph8")
 
 [node name="Unit" parent="Bench" instance=ExtResource("4_d4agj")]
 position = Vector2(32, -160)
+stats = ExtResource("8_40d7b")
 
 [node name="Unit2" parent="Bench" instance=ExtResource("4_d4agj")]
 position = Vector2(64, -160)
@@ -133,7 +133,6 @@ tile = Vector2i(3, 0)
 
 [node name="SellPortal" parent="." instance=ExtResource("12_jfrdp")]
 position = Vector2(80, 288)
-player_stats = ExtResource("13_jdvan")
 
 [node name="UnitMover" type="Node" parent="." node_paths=PackedStringArray("play_areas")]
 script = ExtResource("8_pf53d")
@@ -147,3 +146,4 @@ game_area = NodePath("../GameArea")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Shop" parent="UI" instance=ExtResource("14_l7l4v")]
+unique_name_in_owner = true

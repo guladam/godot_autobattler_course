@@ -13,6 +13,7 @@ font = ExtResource("1_l8led")
 font_color = Color(0.6, 0.862745, 1, 0.729412)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqgew"]
+resource_local_to_scene = true
 bg_color = Color(0.0705882, 0.290196, 0.180392, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cefo1"]
@@ -25,6 +26,7 @@ border_width_bottom = 2
 border_color = Color(0.0705882, 0.290196, 0.180392, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tdfpu"]
+resource_local_to_scene = true
 atlas = ExtResource("3_mw3xm")
 region = Rect2(32, 96, 32, 32)
 
