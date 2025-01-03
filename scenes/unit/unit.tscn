@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dctbclookhob7"]
+[gd_scene load_steps=15 format=3 uid="uid://dctbclookhob7"]
 
 [ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="1_6prxo"]
 [ext_resource type="Script" path="res://scenes/unit/unit.gd" id="1_hvsd5"]
@@ -6,7 +6,9 @@
 [ext_resource type="Material" uid="uid://bb8m5fhpi4wqn" path="res://assets/shaders/2d_outline_shader.tres" id="3_7sojm"]
 [ext_resource type="Script" path="res://components/drag_and_drop.gd" id="4_4lsat"]
 [ext_resource type="Script" path="res://components/velocity_based_rotation.gd" id="5_rio0o"]
+[ext_resource type="PackedScene" uid="uid://unne35x1mlsa" path="res://scenes/tier_icon/tier_icon.tscn" id="5_yunqe"]
 [ext_resource type="Script" path="res://components/outline_highlighter.gd" id="7_w1ko1"]
+[ext_resource type="Script" path="res://components/unit_animations.gd" id="9_tsr1y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpqbl"]
 size = Vector2(36, 36)
@@ -70,6 +72,11 @@ theme_override_styles/background = SubResource("StyleBoxFlat_hcypn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_v3q28")
 show_percentage = false
 
+[node name="TierIcon" parent="." instance=ExtResource("5_yunqe")]
+offset_top = -13.0
+offset_bottom = -3.0
+stats = ExtResource("2_gqc60")
+
 [node name="DragAndDrop" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("4_4lsat")
 target = NodePath("..")
@@ -85,6 +92,10 @@ script = ExtResource("7_w1ko1")
 visuals = NodePath("../Visuals")
 outline_color = Color(1, 1, 1, 1)
 outline_thickness = 2
+
+[node name="UnitAnimations" type="Node" parent="." node_paths=PackedStringArray("unit")]
+script = ExtResource("9_tsr1y")
+unit = NodePath("..")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://btsdfk3w6ejf7"]
+[gd_scene load_steps=20 format=4 uid="uid://btsdfk3w6ejf7"]
 
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
 [ext_resource type="Script" path="res://scenes/arena/arena.gd" id="1_p34ty"]
@@ -7,12 +7,11 @@
 [ext_resource type="Script" path="res://components/play_area.gd" id="4_nfvuo"]
 [ext_resource type="Script" path="res://components/unit_grid.gd" id="4_o6kfo"]
 [ext_resource type="Script" path="res://components/tile_highlighter.gd" id="6_0fpan"]
-[ext_resource type="Resource" uid="uid://47wo0eppmuth" path="res://data/units/robin.tres" id="8_3ad30"]
-[ext_resource type="Resource" uid="uid://ddjdrido7fjsw" path="res://data/units/bjorn_test.tres" id="8_40d7b"]
-[ext_resource type="Resource" uid="uid://cxt8jraate1vr" path="res://data/units/arthur.tres" id="8_nctb4"]
+[ext_resource type="Script" path="res://data/units/unit_stats.gd" id="8_kbrpv"]
 [ext_resource type="Script" path="res://components/unit_mover.gd" id="8_pf53d"]
 [ext_resource type="Script" path="res://components/unit_spawner.gd" id="11_323go"]
 [ext_resource type="PackedScene" uid="uid://by3h7pasink2e" path="res://scenes/sell_portal/sell_portal.tscn" id="12_jfrdp"]
+[ext_resource type="Script" path="res://components/unit_combiner.gd" id="14_aaca4"]
 [ext_resource type="PackedScene" uid="uid://8gnysrx0alpt" path="res://scenes/shop/shop.tscn" id="14_l7l4v"]
 
 [sub_resource type="Curve" id="Curve_gxqt7"]
@@ -36,6 +35,36 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_5sum6")
 color = Color(1, 1, 1, 0.494118)
+
+[sub_resource type="Resource" id="Resource_6hd7w"]
+resource_local_to_scene = true
+script = ExtResource("8_kbrpv")
+name = "Bjorn"
+rarity = 0
+gold_cost = 1
+tier = 3
+pool_count = 5
+skin_coordinates = Vector2i(1, 3)
+
+[sub_resource type="Resource" id="Resource_b65bs"]
+resource_local_to_scene = true
+script = ExtResource("8_kbrpv")
+name = "Robin"
+rarity = 0
+gold_cost = 1
+tier = 3
+pool_count = 20
+skin_coordinates = Vector2i(2, 0)
+
+[sub_resource type="Resource" id="Resource_bdmas"]
+resource_local_to_scene = true
+script = ExtResource("8_kbrpv")
+name = "Arthur"
+rarity = 2
+gold_cost = 4
+tier = 1
+pool_count = 5
+skin_coordinates = Vector2i(4, 2)
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_p34ty")
@@ -110,15 +139,15 @@ tile_set = ExtResource("1_64ph8")
 
 [node name="Unit" parent="Bench" instance=ExtResource("4_d4agj")]
 position = Vector2(32, -160)
-stats = ExtResource("8_40d7b")
+stats = SubResource("Resource_6hd7w")
 
 [node name="Unit2" parent="Bench" instance=ExtResource("4_d4agj")]
 position = Vector2(64, -160)
-stats = ExtResource("8_3ad30")
+stats = SubResource("Resource_b65bs")
 
 [node name="Unit3" parent="Bench" instance=ExtResource("4_d4agj")]
 position = Vector2(128, -160)
-stats = ExtResource("8_nctb4")
+stats = SubResource("Resource_bdmas")
 
 [node name="BenchUnitGrid" type="Node2D" parent="Bench"]
 script = ExtResource("4_o6kfo")
@@ -142,6 +171,13 @@ play_areas = [NodePath("../GameArea"), NodePath("../Bench")]
 script = ExtResource("11_323go")
 bench = NodePath("../Bench")
 game_area = NodePath("../GameArea")
+
+[node name="UnitCombiner" type="Node" parent="." node_paths=PackedStringArray("buffer_timer")]
+script = ExtResource("14_aaca4")
+buffer_timer = NodePath("BufferTimer")
+
+[node name="BufferTimer" type="Timer" parent="UnitCombiner"]
+one_shot = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
