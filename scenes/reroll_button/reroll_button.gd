@@ -2,6 +2,7 @@ class_name RerollButton
 extends Button
 
 @export var player_stats: PlayerStats
+@export var reroll_sound: AudioStream
 
 @onready var hbox_container: HBoxContainer = $HBoxContainer
 
@@ -23,3 +24,4 @@ func _on_player_stats_changed() -> void:
 
 func _on_pressed() -> void:
 	player_stats.gold -= 2
+	SFXPlayer.play(reroll_sound)

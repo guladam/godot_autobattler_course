@@ -3,15 +3,16 @@
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
 [ext_resource type="Script" path="res://scenes/arena/arena.gd" id="1_p34ty"]
 [ext_resource type="Texture2D" uid="uid://mbxv0ayrsu3d" path="res://assets/sprites/star_particle.png" id="2_3p7kb"]
-[ext_resource type="PackedScene" uid="uid://dctbclookhob7" path="res://scenes/unit/unit.tscn" id="4_d4agj"]
+[ext_resource type="AudioStream" uid="uid://dwse76yhsgxvm" path="res://assets/music/alexander_ehlers_twists.ogg" id="2_th4wy"]
 [ext_resource type="Script" path="res://components/play_area.gd" id="4_nfvuo"]
 [ext_resource type="Script" path="res://components/unit_grid.gd" id="4_o6kfo"]
 [ext_resource type="Script" path="res://components/tile_highlighter.gd" id="6_0fpan"]
-[ext_resource type="Script" path="res://data/units/unit_stats.gd" id="8_kbrpv"]
 [ext_resource type="Script" path="res://components/unit_mover.gd" id="8_pf53d"]
 [ext_resource type="Script" path="res://data/traits/trait.gd" id="9_65jxt"]
 [ext_resource type="Script" path="res://components/unit_spawner.gd" id="11_323go"]
+[ext_resource type="AudioStream" uid="uid://xgrsj3clmat0" path="res://assets/sfx/unit_place.ogg" id="12_67uak"]
 [ext_resource type="PackedScene" uid="uid://by3h7pasink2e" path="res://scenes/sell_portal/sell_portal.tscn" id="12_jfrdp"]
+[ext_resource type="AudioStream" uid="uid://dubwbrp3e8hg3" path="res://assets/sfx/combine.ogg" id="14_4ebmt"]
 [ext_resource type="PackedScene" uid="uid://doqn5dm1pw1le" path="res://scenes/team_size_ui/team_size_ui.tscn" id="14_5evl7"]
 [ext_resource type="Script" path="res://components/unit_combiner.gd" id="14_aaca4"]
 [ext_resource type="PackedScene" uid="uid://8gnysrx0alpt" path="res://scenes/shop/shop.tscn" id="14_l7l4v"]
@@ -40,41 +41,9 @@ scale_max = 0.2
 scale_curve = SubResource("CurveTexture_5sum6")
 color = Color(1, 1, 1, 0.494118)
 
-[sub_resource type="Resource" id="Resource_vw862"]
-resource_local_to_scene = true
-script = ExtResource("8_kbrpv")
-name = "Bjorn"
-rarity = 0
-gold_cost = 1
-tier = 3
-traits = Array[ExtResource("9_65jxt")]([])
-pool_count = 5
-skin_coordinates = Vector2i(1, 3)
-
-[sub_resource type="Resource" id="Resource_j67jk"]
-resource_local_to_scene = true
-script = ExtResource("8_kbrpv")
-name = "Robin"
-rarity = 0
-gold_cost = 1
-tier = 3
-traits = Array[ExtResource("9_65jxt")]([])
-pool_count = 20
-skin_coordinates = Vector2i(2, 0)
-
-[sub_resource type="Resource" id="Resource_c5usx"]
-resource_local_to_scene = true
-script = ExtResource("8_kbrpv")
-name = "Arthur"
-rarity = 2
-gold_cost = 4
-tier = 1
-traits = Array[ExtResource("9_65jxt")]([])
-pool_count = 5
-skin_coordinates = Vector2i(4, 2)
-
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_p34ty")
+arena_music_stream = ExtResource("2_th4wy")
 metadata/_edit_lock_ = true
 
 [node name="Visuals" type="Node2D" parent="."]
@@ -144,18 +113,6 @@ metadata/_edit_group_ = true
 [node name="Highlight" type="TileMapLayer" parent="Bench"]
 tile_set = ExtResource("1_64ph8")
 
-[node name="Unit" parent="Bench" instance=ExtResource("4_d4agj")]
-position = Vector2(32, -160)
-stats = SubResource("Resource_vw862")
-
-[node name="Unit2" parent="Bench" instance=ExtResource("4_d4agj")]
-position = Vector2(64, -160)
-stats = SubResource("Resource_j67jk")
-
-[node name="Unit3" parent="Bench" instance=ExtResource("4_d4agj")]
-position = Vector2(128, -160)
-stats = SubResource("Resource_c5usx")
-
 [node name="BenchUnitGrid" type="Node2D" parent="Bench"]
 script = ExtResource("4_o6kfo")
 size = Vector2i(10, 1)
@@ -173,6 +130,7 @@ position = Vector2(80, 288)
 [node name="UnitMover" type="Node" parent="." node_paths=PackedStringArray("play_areas")]
 script = ExtResource("8_pf53d")
 play_areas = [NodePath("../GameArea"), NodePath("../Bench")]
+unit_place_sound = ExtResource("12_67uak")
 
 [node name="UnitSpawner" type="Node" parent="." node_paths=PackedStringArray("bench", "game_area")]
 script = ExtResource("11_323go")
@@ -182,6 +140,7 @@ game_area = NodePath("../GameArea")
 [node name="UnitCombiner" type="Node" parent="." node_paths=PackedStringArray("buffer_timer")]
 script = ExtResource("14_aaca4")
 buffer_timer = NodePath("BufferTimer")
+combine_sound = ExtResource("14_4ebmt")
 
 [node name="BufferTimer" type="Timer" parent="UnitCombiner"]
 one_shot = true
