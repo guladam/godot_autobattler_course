@@ -1,6 +1,9 @@
-[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3 uid="uid://cxt8jraate1vr"]
+[gd_resource type="Resource" script_class="UnitStats" load_steps=5 format=3 uid="uid://cxt8jraate1vr"]
 
 [ext_resource type="Script" path="res://data/units/unit_stats.gd" id="1_dy7fj"]
+[ext_resource type="Script" path="res://data/traits/trait.gd" id="2_4s8jw"]
+[ext_resource type="Resource" uid="uid://bekcuvjro6nqe" path="res://data/traits/fighter.tres" id="3_5nwna"]
+[ext_resource type="Resource" uid="uid://clx1gl1vn35sq" path="res://data/traits/noble.tres" id="4_oqw0g"]
 
 [resource]
 script = ExtResource("1_dy7fj")
@@ -8,5 +11,6 @@ name = "Arthur"
 rarity = 2
 gold_cost = 4
 tier = 1
+traits = Array[ExtResource("2_4s8jw")]([ExtResource("3_5nwna"), ExtResource("4_oqw0g")])
 pool_count = 5
 skin_coordinates = Vector2i(4, 2)
