@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=5 format=3 uid="uid://0tyl6j6johr7"]
+
+[ext_resource type="Script" path="res://data/units/unit_stats.gd" id="1_emb4c"]
+[ext_resource type="Script" path="res://data/traits/trait.gd" id="2_m1u3i"]
+[ext_resource type="Resource" uid="uid://jdan3bxve344" path="res://data/traits/elf.tres" id="3_yc2ux"]
+[ext_resource type="Resource" uid="uid://bo07jrfhvssep" path="res://data/traits/wizard.tres" id="4_yjlm7"]
+
+[resource]
+script = ExtResource("1_emb4c")
+name = "Harry"
+rarity = 1
+gold_cost = 2
+tier = 1
+traits = Array[ExtResource("2_m1u3i")]([ExtResource("3_yc2ux"), ExtResource("4_yjlm7")])
+pool_count = 5
+skin_coordinates = Vector2i(2, 2)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://btsdfk3w6ejf7"]
+[gd_scene load_steps=24 format=4 uid="uid://btsdfk3w6ejf7"]
 
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
 [ext_resource type="Script" path="res://scenes/arena/arena.gd" id="1_p34ty"]
@@ -9,10 +9,14 @@
 [ext_resource type="Script" path="res://components/tile_highlighter.gd" id="6_0fpan"]
 [ext_resource type="Script" path="res://data/units/unit_stats.gd" id="8_kbrpv"]
 [ext_resource type="Script" path="res://components/unit_mover.gd" id="8_pf53d"]
+[ext_resource type="Script" path="res://data/traits/trait.gd" id="9_65jxt"]
 [ext_resource type="Script" path="res://components/unit_spawner.gd" id="11_323go"]
 [ext_resource type="PackedScene" uid="uid://by3h7pasink2e" path="res://scenes/sell_portal/sell_portal.tscn" id="12_jfrdp"]
+[ext_resource type="PackedScene" uid="uid://doqn5dm1pw1le" path="res://scenes/team_size_ui/team_size_ui.tscn" id="14_5evl7"]
 [ext_resource type="Script" path="res://components/unit_combiner.gd" id="14_aaca4"]
 [ext_resource type="PackedScene" uid="uid://8gnysrx0alpt" path="res://scenes/shop/shop.tscn" id="14_l7l4v"]
+[ext_resource type="Resource" uid="uid://cond60csmn6l4" path="res://data/player/player_stats.tres" id="15_54tee"]
+[ext_resource type="PackedScene" uid="uid://dbkxxes56oj60" path="res://scenes/traits/traits.tscn" id="17_kvkwr"]
 
 [sub_resource type="Curve" id="Curve_gxqt7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.204482, 1), 0.0, 0.0, 0, 0, Vector2(0.795518, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -36,33 +40,36 @@ scale_max = 0.2
 scale_curve = SubResource("CurveTexture_5sum6")
 color = Color(1, 1, 1, 0.494118)
 
-[sub_resource type="Resource" id="Resource_6hd7w"]
+[sub_resource type="Resource" id="Resource_vw862"]
 resource_local_to_scene = true
 script = ExtResource("8_kbrpv")
 name = "Bjorn"
 rarity = 0
 gold_cost = 1
 tier = 3
+traits = Array[ExtResource("9_65jxt")]([])
 pool_count = 5
 skin_coordinates = Vector2i(1, 3)
 
-[sub_resource type="Resource" id="Resource_b65bs"]
+[sub_resource type="Resource" id="Resource_j67jk"]
 resource_local_to_scene = true
 script = ExtResource("8_kbrpv")
 name = "Robin"
 rarity = 0
 gold_cost = 1
 tier = 3
+traits = Array[ExtResource("9_65jxt")]([])
 pool_count = 20
 skin_coordinates = Vector2i(2, 0)
 
-[sub_resource type="Resource" id="Resource_bdmas"]
+[sub_resource type="Resource" id="Resource_c5usx"]
 resource_local_to_scene = true
 script = ExtResource("8_kbrpv")
 name = "Arthur"
 rarity = 2
 gold_cost = 4
 tier = 1
+traits = Array[ExtResource("9_65jxt")]([])
 pool_count = 5
 skin_coordinates = Vector2i(4, 2)
 
@@ -139,15 +146,15 @@ tile_set = ExtResource("1_64ph8")
 
 [node name="Unit" parent="Bench" instance=ExtResource("4_d4agj")]
 position = Vector2(32, -160)
-stats = SubResource("Resource_6hd7w")
+stats = SubResource("Resource_vw862")
 
 [node name="Unit2" parent="Bench" instance=ExtResource("4_d4agj")]
 position = Vector2(64, -160)
-stats = SubResource("Resource_b65bs")
+stats = SubResource("Resource_j67jk")
 
 [node name="Unit3" parent="Bench" instance=ExtResource("4_d4agj")]
 position = Vector2(128, -160)
-stats = SubResource("Resource_bdmas")
+stats = SubResource("Resource_c5usx")
 
 [node name="BenchUnitGrid" type="Node2D" parent="Bench"]
 script = ExtResource("4_o6kfo")
@@ -183,3 +190,18 @@ one_shot = true
 
 [node name="Shop" parent="UI" instance=ExtResource("14_l7l4v")]
 unique_name_in_owner = true
+
+[node name="TeamSizeUI" parent="UI" node_paths=PackedStringArray("arena_grid") instance=ExtResource("14_5evl7")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.0
+offset_top = 4.0
+offset_right = 23.0
+offset_bottom = 28.0
+grow_horizontal = 2
+player_stats = ExtResource("15_54tee")
+arena_grid = NodePath("../../GameArea/ArenaUnitGrid")
+
+[node name="Traits" parent="UI" node_paths=PackedStringArray("arena_grid") instance=ExtResource("17_kvkwr")]
+arena_grid = NodePath("../../GameArea/ArenaUnitGrid")

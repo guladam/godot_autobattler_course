@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Trait" load_steps=3 format=3 uid="uid://ds4k44tlpqvns"]
+
+[ext_resource type="Texture2D" uid="uid://hakpdyod7nvy" path="res://assets/sprites/traits/ranger.png" id="1_q6jpb"]
+[ext_resource type="Script" path="res://data/traits/trait.gd" id="1_v3ipf"]
+
+[resource]
+script = ExtResource("1_v3ipf")
+name = "Ranger"
+icon = ExtResource("1_q6jpb")
+description = ""
+levels = 2
+unit_requirements = Array[int]([2, 4])
+unit_modifiers = Array[PackedScene]([null, null])
