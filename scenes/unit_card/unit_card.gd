@@ -7,6 +7,7 @@ const HOVER_BORDER_COLOR := Color("fafa82")
 
 @export var player_stats: PlayerStats
 @export var unit_stats: UnitStats : set = _set_unit_stats
+@export var buy_sound: AudioStream
 
 @onready var traits: Label = %Traits
 @onready var bottom: Panel = %Bottom
@@ -68,6 +69,7 @@ func _on_pressed() -> void:
 	empty_placeholder.show()
 	player_stats.gold -= unit_stats.gold_cost
 	unit_bought.emit(unit_stats)
+	SFXPlayer.play(buy_sound)
 
 
 func _on_mouse_entered() -> void:

@@ -2,6 +2,7 @@ class_name UnitCombiner
 extends Node
 
 @export var buffer_timer: Timer
+@export var combine_sound: AudioStream
 
 var queued_updates := 0
 var tween: Tween
@@ -39,6 +40,7 @@ func _combine_units(unit1: Unit, unit2: Unit, unit3: Unit) -> void:
 	unit3.remove_from_group("units")
 	unit2.animations.play_combine_animation(unit1.global_position + Arena.QUARTER_CELL_SIZE)
 	unit3.animations.play_combine_animation(unit1.global_position + Arena.QUARTER_CELL_SIZE)
+	SFXPlayer.play(combine_sound)
 
 
 # Returns a dictionary of units grouped by name and tier where
