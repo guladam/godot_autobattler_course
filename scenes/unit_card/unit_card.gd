@@ -42,6 +42,7 @@ func _set_unit_stats(value: UnitStats) -> void:
 	border_color = UnitStats.RARITY_COLORS[unit_stats.rarity]
 	border_sb.border_color = border_color
 	bottom_sb.bg_color = border_color
+	traits.text = "\n".join(Trait.get_trait_names(unit_stats.traits))
 	unit_name.text = unit_stats.name
 	gold_cost.text = str(unit_stats.gold_cost)
 	unit_icon.texture.region.position = Vector2(unit_stats.skin_coordinates) * Arena.CELL_SIZE
