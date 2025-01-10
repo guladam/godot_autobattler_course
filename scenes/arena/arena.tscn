@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://btsdfk3w6ejf7"]
+[gd_scene load_steps=21 format=4 uid="uid://btsdfk3w6ejf7"]
 
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
 [ext_resource type="Script" path="res://scenes/arena/arena.gd" id="1_p34ty"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://components/unit_grid.gd" id="4_o6kfo"]
 [ext_resource type="Script" path="res://components/tile_highlighter.gd" id="6_0fpan"]
 [ext_resource type="Script" path="res://components/unit_mover.gd" id="8_pf53d"]
-[ext_resource type="Script" path="res://data/traits/trait.gd" id="9_65jxt"]
 [ext_resource type="Script" path="res://components/unit_spawner.gd" id="11_323go"]
 [ext_resource type="AudioStream" uid="uid://xgrsj3clmat0" path="res://assets/sfx/unit_place.ogg" id="12_67uak"]
 [ext_resource type="PackedScene" uid="uid://by3h7pasink2e" path="res://scenes/sell_portal/sell_portal.tscn" id="12_jfrdp"]
