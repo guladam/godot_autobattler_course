@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UnitStats" load_steps=5 format=3 uid="uid://dyqvoxv3vg6hp"]
 
-[ext_resource type="Script" path="res://data/units/unit_stats.gd" id="1_6fqjr"]
-[ext_resource type="Script" path="res://data/traits/trait.gd" id="2_v4q1r"]
+[ext_resource type="Script" uid="uid://bp143y4igd7sa" path="res://data/units/unit_stats.gd" id="1_6fqjr"]
+[ext_resource type="Script" uid="uid://dsyxdgrby4ar7" path="res://data/traits/trait.gd" id="2_v4q1r"]
 [ext_resource type="Resource" uid="uid://bekcuvjro6nqe" path="res://data/traits/fighter.tres" id="3_362j6"]
 [ext_resource type="Resource" uid="uid://bkgurfdcihufj" path="res://data/traits/viking.tres" id="4_3x2x7"]
 

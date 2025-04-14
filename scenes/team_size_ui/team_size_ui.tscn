@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://doqn5dm1pw1le"]
 
-[ext_resource type="Script" path="res://scenes/team_size_ui/team_size_ui.gd" id="1_la7y1"]
+[ext_resource type="Script" uid="uid://c2o0ac3jlgjxh" path="res://scenes/team_size_ui/team_size_ui.gd" id="1_la7y1"]
 [ext_resource type="Texture2D" uid="uid://ckect222m1bin" path="res://assets/sprites/warning.png" id="1_xpphg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_le2ba"]

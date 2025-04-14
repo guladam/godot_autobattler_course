@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbkxxes56oj60"]
 
 [ext_resource type="PackedScene" uid="uid://c4isp66o7sso5" path="res://scenes/trait_ui/trait_ui.tscn" id="1_j557w"]
-[ext_resource type="Script" path="res://scenes/traits/traits.gd" id="1_m71nx"]
+[ext_resource type="Script" uid="uid://d2ru03og0u42n" path="res://scenes/traits/traits.gd" id="1_m71nx"]
 
 [node name="Traits" type="Control"]
 layout_mode = 3

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://vdsh8er0jfuo"]
 
-[ext_resource type="Script" path="res://scenes/unit_card/unit_card.gd" id="1_83v2f"]
+[ext_resource type="Script" uid="uid://bra3fnoskan71" path="res://scenes/unit_card/unit_card.gd" id="1_83v2f"]
 [ext_resource type="FontFile" uid="uid://8di0jvr25vat" path="res://assets/font/m5x7.ttf" id="1_l8led"]
 [ext_resource type="Texture2D" uid="uid://c4awhqfup7o2k" path="res://assets/sprites/gold.png" id="2_e66d1"]
 [ext_resource type="Resource" uid="uid://cond60csmn6l4" path="res://data/player/player_stats.tres" id="2_h2015"]

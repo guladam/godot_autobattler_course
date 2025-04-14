@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://lfdpar3i1ke5"]
 
-[ext_resource type="Script" path="res://scenes/gold_display/gold_display.gd" id="1_hvux1"]
+[ext_resource type="Script" uid="uid://butqj2ffypcy4" path="res://scenes/gold_display/gold_display.gd" id="1_hvux1"]
 [ext_resource type="Texture2D" uid="uid://c4awhqfup7o2k" path="res://assets/sprites/gold.png" id="1_m0cew"]
 [ext_resource type="Resource" uid="uid://cond60csmn6l4" path="res://data/player/player_stats.tres" id="2_liaha"]
 

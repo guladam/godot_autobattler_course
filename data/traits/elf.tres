@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Trait" load_steps=3 format=3 uid="uid://jdan3bxve344"]
 
-[ext_resource type="Script" path="res://data/traits/trait.gd" id="1_f47wf"]
+[ext_resource type="Script" uid="uid://dsyxdgrby4ar7" path="res://data/traits/trait.gd" id="1_f47wf"]
 [ext_resource type="Texture2D" uid="uid://b1aup08or8bao" path="res://assets/sprites/traits/elf.png" id="1_mkog6"]
 
 [resource]

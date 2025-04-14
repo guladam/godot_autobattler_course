@@ -4,7 +4,7 @@
 [ext_resource type="StyleBox" uid="uid://mgcn15cjl08u" path="res://assets/theme/shop_button_pressed.tres" id="2_msq74"]
 [ext_resource type="StyleBox" uid="uid://c3ias4kwkl52j" path="res://assets/theme/shop_button_normal.tres" id="3_ydmxm"]
 [ext_resource type="FontFile" uid="uid://8di0jvr25vat" path="res://assets/font/m5x7.ttf" id="4_dbqjr"]
-[ext_resource type="Script" path="res://scenes/xp_button/xp_button.gd" id="4_w0u66"]
+[ext_resource type="Script" uid="uid://bfnn18qhmyqrk" path="res://scenes/xp_button/xp_button.gd" id="4_w0u66"]
 [ext_resource type="Resource" uid="uid://cond60csmn6l4" path="res://data/player/player_stats.tres" id="5_74p0o"]
 [ext_resource type="Texture2D" uid="uid://c4awhqfup7o2k" path="res://assets/sprites/gold.png" id="5_s8bds"]
 [ext_resource type="AudioStream" uid="uid://q4db8jmbfdk7" path="res://assets/sfx/xp_buy.ogg" id="6_4wjby"]
