@@ -66,9 +66,9 @@ tile_set = ExtResource("1_64ph8")
 z_index = 99
 position = Vector2(320, 180)
 amount = 20
-process_material = SubResource("ParticleProcessMaterial_v1x5q")
 texture = ExtResource("2_3p7kb")
 lifetime = 6.0
+process_material = SubResource("ParticleProcessMaterial_v1x5q")
 
 [node name="GameArea" type="TileMapLayer" parent="." node_paths=PackedStringArray("unit_grid", "tile_highlighter")]
 position = Vector2(160, 32)
