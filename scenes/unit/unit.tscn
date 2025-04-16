@@ -1,39 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://dctbclookhob7"]
+[gd_scene load_steps=14 format=3 uid="uid://dctbclookhob7"]
 
 [ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="1_6prxo"]
 [ext_resource type="Script" uid="uid://ieab06tk83h4" path="res://scenes/unit/unit.gd" id="1_hvsd5"]
 [ext_resource type="Resource" uid="uid://dyqvoxv3vg6hp" path="res://data/units/bjorn.tres" id="2_gqc60"]
 [ext_resource type="Material" uid="uid://bb8m5fhpi4wqn" path="res://assets/shaders/2d_outline_shader.tres" id="3_7sojm"]
 [ext_resource type="Script" uid="uid://d322rsxkkib3n" path="res://components/drag_and_drop.gd" id="4_4lsat"]
+[ext_resource type="PackedScene" uid="uid://di1627tggvh6r" path="res://scenes/health_bar/health_bar.tscn" id="5_5im7a"]
+[ext_resource type="Script" uid="uid://bpfvys3yg0516" path="res://components/packed_sprite2d.gd" id="5_7jhsn"]
 [ext_resource type="Script" uid="uid://82ua7jos4rf2" path="res://components/velocity_based_rotation.gd" id="5_rio0o"]
 [ext_resource type="PackedScene" uid="uid://unne35x1mlsa" path="res://scenes/tier_icon/tier_icon.tscn" id="5_yunqe"]
+[ext_resource type="PackedScene" uid="uid://c7pf7qph33dgb" path="res://scenes/mana_bar/mana_bar.tscn" id="6_7jhsn"]
 [ext_resource type="Script" uid="uid://ccks8se2fxj6f" path="res://components/outline_highlighter.gd" id="7_w1ko1"]
-[ext_resource type="Script" uid="uid://b40qonitqky5l" path="res://components/unit_animations.gd" id="9_tsr1y"]
+[ext_resource type="Script" uid="uid://b40qonitqky5l" path="res://custom_nodes/unit_animations.gd" id="9_tsr1y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpqbl"]
 size = Vector2(36, 36)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yx1gm"]
-bg_color = Color(0.231373, 0.113725, 0.0980392, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qmt7f"]
-bg_color = Color(0, 0.733333, 0.313726, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.231373, 0.113725, 0.0980392, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcypn"]
-bg_color = Color(0.231373, 0.113725, 0.0980392, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3q28"]
-bg_color = Color(0, 0.654902, 0.937255, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.231373, 0.113725, 0.0980392, 1)
 
 [node name="Unit" type="Area2D" groups=["units"]]
 script = ExtResource("1_hvsd5")
@@ -48,31 +29,19 @@ position = Vector2(16, 8)
 texture = ExtResource("1_6prxo")
 region_enabled = true
 region_rect = Rect2(32, 96, 32, 32)
+script = ExtResource("5_7jhsn")
+coordinates = Vector2i(1, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(16, 8)
 shape = SubResource("RectangleShape2D_wpqbl")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = 1.0
-offset_top = -20.0
-offset_right = 31.0
-offset_bottom = -14.0
-theme_override_styles/background = SubResource("StyleBoxFlat_yx1gm")
-theme_override_styles/fill = SubResource("StyleBoxFlat_qmt7f")
-value = 41.04
-show_percentage = false
+[node name="HealthBar" parent="." instance=ExtResource("5_5im7a")]
 
-[node name="ManaBar" type="ProgressBar" parent="."]
-offset_left = 1.0
-offset_top = -15.0
-offset_right = 31.0
-offset_bottom = -11.0
-theme_override_styles/background = SubResource("StyleBoxFlat_hcypn")
-theme_override_styles/fill = SubResource("StyleBoxFlat_v3q28")
-show_percentage = false
+[node name="ManaBar" parent="." instance=ExtResource("6_7jhsn")]
 
 [node name="TierIcon" parent="." instance=ExtResource("5_yunqe")]
+z_index = 1
 offset_top = -13.0
 offset_bottom = -3.0
 stats = ExtResource("2_gqc60")
