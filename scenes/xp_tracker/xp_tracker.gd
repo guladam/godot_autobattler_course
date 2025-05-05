@@ -33,6 +33,6 @@ func _set_max_level_values() -> void:
 
 
 func _set_xp_bar_values() -> void:
-	var xp_requirement: float = player_stats.get_current_xp_requirement()
+	var xp_requirement := player_stats.get_current_xp_requirement()
 	xp_label.text = "%s/%s" % [player_stats.xp, xp_requirement]
-	progress_bar.value = (player_stats.xp / xp_requirement) * 100
+	progress_bar.value = (player_stats.xp / float(xp_requirement)) * 100

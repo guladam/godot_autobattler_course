@@ -18,10 +18,11 @@ func update(units: Array[Unit]) -> void:
 
 
 func _set_trait_data(value: Trait) -> void:
-	if not is_node_ready():
-		await ready
-
 	trait_data = value
+	
+	if value == null or not is_instance_valid(trait_label):
+		return
+	
 	trait_icon.texture = trait_data.icon
 	trait_label.text = trait_data.name
 

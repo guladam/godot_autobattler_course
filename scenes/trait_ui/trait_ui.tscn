@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4isp66o7sso5"]
+[gd_scene load_steps=7 format=3 uid="uid://c4isp66o7sso5"]
 
 [ext_resource type="Script" uid="uid://ba1t6124h4kj3" path="res://scenes/trait_ui/trait_ui.gd" id="1_04ft7"]
 [ext_resource type="Texture2D" uid="uid://l1jq47dgo2n1" path="res://assets/sprites/trait_background.png" id="1_8vntc"]
 [ext_resource type="Texture2D" uid="uid://b1aup08or8bao" path="res://assets/sprites/traits/elf.png" id="2_xj1un"]
-[ext_resource type="Resource" uid="uid://jdan3bxve344" path="res://data/traits/elf.tres" id="2_yv8en"]
 [ext_resource type="FontFile" uid="uid://8di0jvr25vat" path="res://assets/font/m5x7.ttf" id="3_gyayg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dm8vm"]
@@ -18,7 +17,6 @@ shadow_color = Color(0, 0, 0, 1)
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_04ft7")
-trait_data = ExtResource("2_yv8en")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
