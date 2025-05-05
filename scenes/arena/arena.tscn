@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://btsdfk3w6ejf7"]
+[gd_scene load_steps=24 format=4 uid="uid://btsdfk3w6ejf7"]
 
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
 [ext_resource type="Script" uid="uid://1v8f0gortgfu" path="res://scenes/arena/arena.gd" id="1_p34ty"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://br017kbxir65y" path="res://components/scene_spawner.gd" id="12_8kk48"]
 [ext_resource type="AudioStream" uid="uid://xgrsj3clmat0" path="res://assets/sfx/unit_place.ogg" id="12_67uak"]
 [ext_resource type="PackedScene" uid="uid://by3h7pasink2e" path="res://scenes/sell_portal/sell_portal.tscn" id="12_jfrdp"]
+[ext_resource type="Resource" uid="uid://b4vxxpwcl5sbl" path="res://data/game_state/game_state.tres" id="12_wqbss"]
 [ext_resource type="PackedScene" uid="uid://dctbclookhob7" path="res://scenes/unit/unit.tscn" id="13_wqbss"]
 [ext_resource type="AudioStream" uid="uid://dubwbrp3e8hg3" path="res://assets/sfx/combine.ogg" id="14_4ebmt"]
 [ext_resource type="PackedScene" uid="uid://doqn5dm1pw1le" path="res://scenes/team_size_ui/team_size_ui.tscn" id="14_5evl7"]
@@ -131,12 +132,14 @@ position = Vector2(80, 288)
 [node name="UnitMover" type="Node" parent="." node_paths=PackedStringArray("play_areas")]
 script = ExtResource("8_pf53d")
 play_areas = [NodePath("../GameArea"), NodePath("../Bench")]
+game_state = ExtResource("12_wqbss")
 unit_place_sound = ExtResource("12_67uak")
 
 [node name="UnitSpawner" type="Node" parent="." node_paths=PackedStringArray("bench", "game_area")]
 script = ExtResource("11_323go")
 bench = NodePath("../Bench")
 game_area = NodePath("../GameArea")
+game_state = ExtResource("12_wqbss")
 
 [node name="SceneSpawner" type="Node" parent="UnitSpawner"]
 script = ExtResource("12_8kk48")

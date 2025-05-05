@@ -2,12 +2,18 @@ class_name UnitStats
 extends Resource
 
 enum Rarity {COMMON, UNCOMMON, RARE, LEGENDARY}
+enum Team {PLAYER, ENEMY}
 
 const RARITY_COLORS := {
 	Rarity.COMMON: Color("124a2e"),
 	Rarity.UNCOMMON: Color("1c527c"),
 	Rarity.RARE: Color("ab0979"),
 	Rarity.LEGENDARY: Color("ea940b"),
+}
+
+const TEAM_SPRITESHEET := {
+	Team.PLAYER: preload("res://assets/sprites/rogues.png"),
+	Team.ENEMY: preload("res://assets/sprites/monsters.png")
 }
 
 @export var name: String
@@ -21,6 +27,9 @@ const RARITY_COLORS := {
 
 @export_category("Visuals")
 @export var skin_coordinates: Vector2i
+
+@export_category("Battle")
+@export var team: Team
 
 
 func get_combined_unit_count() -> int:
