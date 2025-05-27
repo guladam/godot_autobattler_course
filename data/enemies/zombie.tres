@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=3 format=3 uid="uid://c0gdg1d6v1drn"]
+
+[ext_resource type="Script" uid="uid://bp143y4igd7sa" path="res://data/units/unit_stats.gd" id="1_bncb8"]
+[ext_resource type="Script" uid="uid://dsyxdgrby4ar7" path="res://data/traits/trait.gd" id="2_m70pa"]
+
+[resource]
+script = ExtResource("1_bncb8")
+name = "Zombie"
+rarity = 0
+gold_cost = 1
+tier = 1
+traits = Array[ExtResource("2_m70pa")]([])
+pool_count = 5
+skin_coordinates = Vector2i(0, 0)
+team = 1
+metadata/_custom_type_script = "uid://bp143y4igd7sa"
