@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://btsdfk3w6ejf7"]
+[gd_scene load_steps=28 format=4 uid="uid://btsdfk3w6ejf7"]
 
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
 [ext_resource type="Script" uid="uid://1v8f0gortgfu" path="res://scenes/arena/arena.gd" id="1_p34ty"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dvn2jwl1qt8h2" path="res://custom_nodes/unit_grid.gd" id="4_o6kfo"]
 [ext_resource type="Script" uid="uid://bio7ialwr0utw" path="res://components/tile_highlighter.gd" id="6_0fpan"]
 [ext_resource type="Script" uid="uid://dp7sf7u48egxj" path="res://custom_nodes/unit_mover.gd" id="8_pf53d"]
+[ext_resource type="Script" uid="uid://1v7lignn6p14" path="res://custom_nodes/unit_navigation_debug.gd" id="9_l0cts"]
 [ext_resource type="Script" uid="uid://cxgy8nwerioxy" path="res://custom_nodes/unit_spawner.gd" id="11_323go"]
 [ext_resource type="Script" uid="uid://br017kbxir65y" path="res://components/scene_spawner.gd" id="12_8kk48"]
 [ext_resource type="AudioStream" uid="uid://xgrsj3clmat0" path="res://assets/sfx/unit_place.ogg" id="12_67uak"]
@@ -135,6 +136,15 @@ tile = Vector2i(3, 0)
 
 [node name="SellPortal" parent="." instance=ExtResource("12_jfrdp")]
 position = Vector2(80, 288)
+
+[node name="UnitNavigationDebug" type="Node2D" parent="." node_paths=PackedStringArray("game_area")]
+position = Vector2(160, 32)
+script = ExtResource("9_l0cts")
+color = Color(0.796078, 0.34902, 0.45098, 0.517647)
+path_colors = Array[Color]([Color(0.331239, 0.865301, 0.996207, 1), Color(1, 0.510256, 0.443869, 1), Color(0, 1, 0, 1), Color(0.998644, 0.888282, 7.70092e-07, 1), Color(0.96124, 0.332391, 1, 1)])
+game_area = NodePath("../GameArea")
+metadata/_custom_type_script = "uid://1v7lignn6p14"
+metadata/_edit_lock_ = true
 
 [node name="UnitMover" type="Node" parent="." node_paths=PackedStringArray("play_areas")]
 script = ExtResource("8_pf53d")

@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 
 MusicPlayer="*res://scenes/audio_player/music_player.tscn"
 SFXPlayer="*res://scenes/audio_player/sfx_player.tscn"
+UnitNavigation="*res://custom_nodes/unit_navigation.gd"
 
 [display]
 
