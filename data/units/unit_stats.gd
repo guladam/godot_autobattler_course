@@ -16,6 +16,8 @@ const TEAM_SPRITESHEET := {
 	Team.ENEMY: preload("res://assets/sprites/monsters.png")
 }
 
+const MOVE_ONE_TILE_SPEED := 1.0
+
 @export var name: String
 
 @export_category("Data")
