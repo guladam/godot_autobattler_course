@@ -26,6 +26,8 @@ func _ready() -> void:
 
 
 func _setup_battle_unit(unit_coord: Vector2i, new_unit: BattleUnit) -> void:
+	new_unit.stats.reset_health()
+	new_unit.stats.reset_mana()
 	new_unit.global_position = game_area.get_global_from_tile(unit_coord) + Vector2(0, -Arena.QUARTER_CELL_SIZE.y)
 	new_unit.tree_exited.connect(_on_battle_unit_died)
 	battle_unit_grid.add_unit(unit_coord, new_unit)

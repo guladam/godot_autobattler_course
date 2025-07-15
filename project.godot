@@ -62,6 +62,13 @@ test2={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemy"
+2d_physics/layer_3="player_range"
+2d_physics/layer_4="enemy_range"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

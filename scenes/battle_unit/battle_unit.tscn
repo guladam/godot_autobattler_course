@@ -1,16 +1,21 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkwflybey1smm"]
+[gd_scene load_steps=19 format=3 uid="uid://bkwflybey1smm"]
 
 [ext_resource type="Script" uid="uid://bq4gnwctciu45" path="res://scenes/battle_unit/battle_unit.gd" id="1_rmpo8"]
 [ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="1_tah2m"]
-[ext_resource type="Resource" uid="uid://47wo0eppmuth" path="res://data/units/robin.tres" id="2_4s270"]
+[ext_resource type="Resource" uid="uid://dyqvoxv3vg6hp" path="res://data/units/bjorn.tres" id="2_1myfu"]
 [ext_resource type="Script" uid="uid://bpfvys3yg0516" path="res://components/packed_sprite2d.gd" id="2_rmpo8"]
 [ext_resource type="PackedScene" uid="uid://di1627tggvh6r" path="res://scenes/health_bar/health_bar.tscn" id="3_4s270"]
 [ext_resource type="PackedScene" uid="uid://c7pf7qph33dgb" path="res://scenes/mana_bar/mana_bar.tscn" id="4_u0yfu"]
+[ext_resource type="Script" uid="uid://deepgshpthm4v" path="res://components/hurtbox.gd" id="5_1myfu"]
 [ext_resource type="PackedScene" uid="uid://unne35x1mlsa" path="res://scenes/tier_icon/tier_icon.tscn" id="5_hf5vq"]
-[ext_resource type="Script" uid="uid://dh3466kon35dx" path="res://components/finite_state_machine.gd" id="8_u0yfu"]
+[ext_resource type="Script" uid="uid://cefxv7hcoa2el" path="res://custom_nodes/detect_range.gd" id="5_nmiut"]
 [ext_resource type="Script" uid="uid://bml2bk8y0qsx4" path="res://scenes/battle_unit/ai/unit_ai.gd" id="9_hf5vq"]
+[ext_resource type="Script" uid="uid://g6jcquelxqiu" path="res://custom_nodes/target_finder.gd" id="10_nmiut"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1myfu"]
+size = Vector2(36, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmiut"]
 size = Vector2(36, 36)
 
 [sub_resource type="Animation" id="Animation_rmpo8"]
@@ -173,8 +178,10 @@ _data = {
 }
 
 [node name="BattleUnit" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_rmpo8")
-stats = ExtResource("2_4s270")
+stats = ExtResource("2_1myfu")
 
 [node name="Skin" type="Sprite2D" parent="."]
 texture = ExtResource("1_tah2m")
@@ -186,6 +193,23 @@ metadata/_custom_type_script = "uid://bpfvys3yg0516"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1myfu")
+
+[node name="DetectRange" type="Area2D" parent="." node_paths=PackedStringArray("col_shape")]
+script = ExtResource("5_nmiut")
+col_shape = NodePath("CollisionShape2D")
+base_range_size = 36.0
+metadata/_custom_type_script = "uid://cefxv7hcoa2el"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRange"]
+debug_color = Color(0.555828, 0.00284761, 0.847295, 0.42)
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("5_1myfu")
+metadata/_custom_type_script = "uid://deepgshpthm4v"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_nmiut")
+debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="HealthBar" parent="." instance=ExtResource("3_4s270")]
 offset_left = -15.0
@@ -213,15 +237,15 @@ offset_right = 65.0
 offset_bottom = -29.0
 horizontal_alignment = 1
 
-[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("debug_label")]
-script = ExtResource("8_u0yfu")
-debug_label = NodePath("../FSMDebugLabel")
-metadata/_custom_type_script = "uid://dh3466kon35dx"
-
-[node name="UnitAI" type="Node" parent="." node_paths=PackedStringArray("actor", "fsm")]
-script = ExtResource("9_hf5vq")
+[node name="TargetFinder" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("10_nmiut")
 actor = NodePath("..")
-fsm = NodePath("../FiniteStateMachine")
+metadata/_custom_type_script = "uid://g6jcquelxqiu"
+
+[node name="UnitAI" type="Node" parent="." node_paths=PackedStringArray("debug_label", "actor")]
+script = ExtResource("9_hf5vq")
+debug_label = NodePath("../FSMDebugLabel")
+actor = NodePath("..")
 metadata/_custom_type_script = "uid://bml2bk8y0qsx4"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
