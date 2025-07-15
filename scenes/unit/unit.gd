@@ -4,7 +4,7 @@ extends Area2D
 
 signal quick_sell_pressed
 
-@export var stats: UnitStats : set = set_stats
+@export var stats: UnitStats : set = _set_stats
 
 @onready var skin: PackedSprite2D = $Visuals/Skin
 @onready var health_bar: ProgressBar = $HealthBar
@@ -32,7 +32,7 @@ func _input(event: InputEvent) -> void:
 		quick_sell_pressed.emit()
 
 
-func set_stats(value: UnitStats) -> void:
+func _set_stats(value: UnitStats) -> void:
 	stats = value
 	
 	if value == null or not is_instance_valid(tier_icon):

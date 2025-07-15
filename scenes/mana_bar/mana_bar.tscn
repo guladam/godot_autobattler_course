@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7pf7qph33dgb"]
+[gd_scene load_steps=4 format=3 uid="uid://c7pf7qph33dgb"]
+
+[ext_resource type="Script" uid="uid://bm1vd2enois0d" path="res://scenes/mana_bar/mana_bar.gd" id="1_x6g12"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcypn"]
 bg_color = Color(0.231373, 0.113725, 0.0980392, 1)
@@ -20,3 +22,4 @@ offset_bottom = -11.0
 theme_override_styles/background = SubResource("StyleBoxFlat_hcypn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_v3q28")
 show_percentage = false
+script = ExtResource("1_x6g12")
