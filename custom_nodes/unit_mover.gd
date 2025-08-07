@@ -70,9 +70,8 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 	var drop_area_index := _get_play_area_for_position(unit.get_global_mouse_position())
 	var invalid_drop := drop_area_index == -1
 	var bench_to_game := old_area_index == 1 and drop_area_index == 0
-	var is_battling := game_state.current_phase == GameState.Phase.BATTLE
 	
-	if invalid_drop or (bench_to_game and is_battling):
+	if invalid_drop or (bench_to_game and game_state.is_battling()):
 		_reset_unit_to_starting_position(starting_position, unit)
 		return
 
