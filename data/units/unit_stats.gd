@@ -51,7 +51,10 @@ const MOVE_ONE_TILE_SPEED := 1.0
 @export var armor: int
 @export var magic_resist: int
 @export_range(1, MAX_ATTACK_RANGE) var attack_range: int
-# TODO attack and casting related variables
+@export var melee_attack: PackedScene = preload("res://scenes/_effects/attack_smear_effect.tscn")
+@export var ranged_attack: PackedScene
+@export var ability: PackedScene
+@export var auto_attack_sound: AudioStream
 
 var health: int : set = _set_health
 var mana: int : set = _set_mana

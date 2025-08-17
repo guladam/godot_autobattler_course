@@ -13,11 +13,10 @@ signal unit_spawned(unit: Unit)
 func _get_first_available_area() -> PlayArea:
 	var bench_full := bench.unit_grid.is_grid_full()
 	var game_area_full := game_area.unit_grid.is_grid_full()
-	var is_battling := game_state.current_phase == GameState.Phase.BATTLE
 	
 	if not bench_full:
 		return bench
-	elif not game_area_full and not is_battling:
+	elif not game_area_full and not game_state.is_battling():
 		return game_area
 	
 	return null
