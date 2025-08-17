@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="UnitStats" load_steps=3 format=3 uid="uid://c0gdg1d6v1drn"]
+[gd_resource type="Resource" script_class="UnitStats" load_steps=4 format=3 uid="uid://c0gdg1d6v1drn"]
 
 [ext_resource type="Script" uid="uid://bp143y4igd7sa" path="res://data/units/unit_stats.gd" id="1_bncb8"]
+[ext_resource type="PackedScene" uid="uid://6xbfap3o0lej" path="res://scenes/_effects/attack_smear_effect.tscn" id="1_m70pa"]
 [ext_resource type="Script" uid="uid://dsyxdgrby4ar7" path="res://data/traits/trait.gd" id="2_m70pa"]
 
 [resource]
@@ -22,4 +23,5 @@ attack_speed = 0.7
 armor = 0
 magic_resist = 0
 attack_range = 1
+melee_attack = ExtResource("1_m70pa")
 metadata/_custom_type_script = "uid://bp143y4igd7sa"

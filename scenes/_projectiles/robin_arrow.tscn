@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://f5qpqsne2aqm"]
+
+[ext_resource type="Script" uid="uid://ejyuuhn78frt" path="res://components/projectile.gd" id="1_axj3s"]
+[ext_resource type="Texture2D" uid="uid://wsnev6w61yh" path="res://assets/sprites/effects_projectiles/arrow.png" id="2_g5syl"]
+[ext_resource type="Script" uid="uid://biavqqe1mrjia" path="res://components/hitbox.gd" id="2_yanr4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6pym"]
+size = Vector2(20, 10)
+
+[sub_resource type="Animation" id="Animation_30tqf"]
+resource_name = "flying"
+length = 0.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 7]
+}
+
+[sub_resource type="Animation" id="Animation_beons"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iu4sq"]
+_data = {
+&"RESET": SubResource("Animation_beons"),
+&"flying": SubResource("Animation_30tqf")
+}
+
+[node name="RobinArrow" type="Node2D"]
+script = ExtResource("1_axj3s")
+speed = 300
+metadata/_custom_type_script = "uid://ejyuuhn78frt"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_g5syl")
+hframes = 8
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("2_yanr4")
+metadata/_custom_type_script = "uid://biavqqe1mrjia"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_r6pym")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_iu4sq")
+}
+autoplay = "flying"

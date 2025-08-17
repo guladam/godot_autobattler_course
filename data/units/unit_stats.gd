@@ -88,6 +88,15 @@ func get_time_between_attacks() -> float:
 	return 1 / attack_speed
 
 
+
+func get_team_collision_layer() -> int:
+	return team + 1
+
+
+func get_team_collision_mask() -> int:
+	return 2 - team
+
+
 func is_melee() -> bool:
 	return attack_range == 1
 
