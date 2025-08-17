@@ -1,3 +1,4 @@
+@tool
 @icon("res://assets/icons/hitbox_icon.svg")
 class_name HitBox
 extends Area2D

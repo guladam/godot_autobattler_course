@@ -1,9 +1,19 @@
-[gd_resource type="Resource" script_class="UnitStats" load_steps=5 format=3 uid="uid://47wo0eppmuth"]
+[gd_resource type="Resource" script_class="UnitStats" load_steps=9 format=3 uid="uid://47wo0eppmuth"]
 
+[ext_resource type="AudioStream" uid="uid://c3vttm2ahoywu" path="res://assets/sfx/robin_1.wav" id="1_4y5el"]
 [ext_resource type="Script" uid="uid://bp143y4igd7sa" path="res://data/units/unit_stats.gd" id="1_fyrnm"]
 [ext_resource type="Script" uid="uid://dsyxdgrby4ar7" path="res://data/traits/trait.gd" id="2_7qit6"]
+[ext_resource type="PackedScene" uid="uid://6xbfap3o0lej" path="res://scenes/_effects/attack_smear_effect.tscn" id="2_def0a"]
 [ext_resource type="Resource" uid="uid://jdan3bxve344" path="res://data/traits/elf.tres" id="3_8vdjq"]
+[ext_resource type="PackedScene" uid="uid://f5qpqsne2aqm" path="res://scenes/_projectiles/robin_arrow.tscn" id="3_mwi2g"]
 [ext_resource type="Resource" uid="uid://ds4k44tlpqvns" path="res://data/traits/ranger.tres" id="4_4e7ve"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t6fkn"]
+playback_mode = 1
+random_pitch = 1.25
+random_volume_offset_db = 0.2
+streams_count = 1
+stream_0/stream = ExtResource("1_4y5el")
 
 [resource]
 script = ExtResource("1_fyrnm")
@@ -24,3 +34,6 @@ attack_speed = 1.0
 armor = 0
 magic_resist = 0
 attack_range = 4
+melee_attack = ExtResource("2_def0a")
+ranged_attack = ExtResource("3_mwi2g")
+auto_attack_sound = SubResource("AudioStreamRandomizer_t6fkn")

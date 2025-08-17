@@ -138,6 +138,7 @@ tile = Vector2i(3, 0)
 position = Vector2(80, 288)
 
 [node name="UnitNavigationDebug" type="Node2D" parent="." node_paths=PackedStringArray("game_area")]
+visible = false
 position = Vector2(160, 32)
 script = ExtResource("9_l0cts")
 color = Color(0.796078, 0.34902, 0.45098, 0.517647)
