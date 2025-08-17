@@ -18,14 +18,13 @@ func _ready() -> void:
 
 func _update() -> void:
 	var units_used := arena_grid.get_all_units().size()
-	var is_battling := game_state.current_phase == GameState.Phase.BATTLE
 	
-	disabled = is_battling or units_used > player_stats.level or units_used == 0
+	disabled = game_state.is_battling() or units_used > player_stats.level or units_used == 0
 	icon_texture.modulate.a = 0.5 if disabled else 1.0
 
 
 func _on_pressed() -> void:
-	if game_state.current_phase == GameState.Phase.BATTLE:
+	if game_state.is_battling():
 		return
 
 	game_state.current_phase = GameState.Phase.BATTLE
