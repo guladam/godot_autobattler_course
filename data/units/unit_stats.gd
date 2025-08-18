@@ -88,7 +88,6 @@ func get_time_between_attacks() -> float:
 	return 1 / attack_speed
 
 
-
 func get_team_collision_layer() -> int:
 	return team + 1
 
