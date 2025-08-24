@@ -245,6 +245,10 @@ offset_right = 65.0
 offset_bottom = -29.0
 horizontal_alignment = 1
 
+[node name="AbilitySpawner" type="Node" parent="."]
+script = ExtResource("12_w8xno")
+metadata/_custom_type_script = "uid://br017kbxir65y"
+
 [node name="AttackTimer" type="Timer" parent="."]
 process_callback = 0
 
