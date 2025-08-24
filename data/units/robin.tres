@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="UnitStats" load_steps=9 format=3 uid="uid://47wo0eppmuth"]
+[gd_resource type="Resource" script_class="UnitStats" load_steps=10 format=3 uid="uid://47wo0eppmuth"]
 
 [ext_resource type="AudioStream" uid="uid://c3vttm2ahoywu" path="res://assets/sfx/robin_1.wav" id="1_4y5el"]
+[ext_resource type="PackedScene" uid="uid://c6mjnmpdh4prx" path="res://scenes/_abilities/hail_of_arrows.tscn" id="1_def0a"]
 [ext_resource type="Script" uid="uid://bp143y4igd7sa" path="res://data/units/unit_stats.gd" id="1_fyrnm"]
 [ext_resource type="Script" uid="uid://dsyxdgrby4ar7" path="res://data/traits/trait.gd" id="2_7qit6"]
 [ext_resource type="PackedScene" uid="uid://6xbfap3o0lej" path="res://scenes/_effects/attack_smear_effect.tscn" id="2_def0a"]
@@ -36,4 +37,5 @@ magic_resist = 0
 attack_range = 4
 melee_attack = ExtResource("2_def0a")
 ranged_attack = ExtResource("3_mwi2g")
+ability = ExtResource("1_def0a")
 auto_attack_sound = SubResource("AudioStreamRandomizer_t6fkn")
