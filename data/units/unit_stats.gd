@@ -80,6 +80,10 @@ func get_max_health() -> int:
 	return max_health[tier-1]
 
 
+func get_health_percentage() -> float:
+	return health / float(get_max_health())
+
+
 func get_attack_damage() -> int:
 	return attack_damage[tier-1]
 

@@ -13,6 +13,7 @@ extends Area2D
 @onready var attack_timer: Timer = $AttackTimer
 @onready var flip_sprite: FlipSprite = $FlipSprite
 @onready var melee_attack: Attack = $MeleeAttack
+@onready var modifier_handler: ModifierHandler = $ModifierHandler
 @onready var ranged_attack: Attack = $RangedAttack
 @onready var target_finder: TargetFinder = $TargetFinder
 @onready var unit_ai: UnitAI = $UnitAI

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://btsdfk3w6ejf7"]
+[gd_scene load_steps=29 format=4 uid="uid://btsdfk3w6ejf7"]
 
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
 [ext_resource type="Script" uid="uid://1v8f0gortgfu" path="res://scenes/arena/arena.gd" id="1_p34ty"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://dhb2ntovbb66k" path="res://custom_nodes/battle_handler.gd" id="17_dh340"]
 [ext_resource type="PackedScene" uid="uid://dbkxxes56oj60" path="res://scenes/traits/traits.tscn" id="17_kvkwr"]
 [ext_resource type="PackedScene" uid="uid://bkwflybey1smm" path="res://scenes/battle_unit/battle_unit.tscn" id="18_l0cts"]
+[ext_resource type="Script" uid="uid://nd6fjcx1kt82" path="res://custom_nodes/trait_tracker.gd" id="20_ybinm"]
 [ext_resource type="PackedScene" uid="uid://bcylmwymt6b3b" path="res://scenes/start_battle_button/start_battle_button.tscn" id="21_fir7s"]
 
 [sub_resource type="Curve" id="Curve_gxqt7"]
@@ -171,18 +172,24 @@ combine_sound = ExtResource("14_4ebmt")
 [node name="BufferTimer" type="Timer" parent="UnitCombiner"]
 one_shot = true
 
-[node name="BattleHandler" type="Node" parent="." node_paths=PackedStringArray("game_area", "game_area_unit_grid", "battle_unit_grid")]
+[node name="BattleHandler" type="Node" parent="." node_paths=PackedStringArray("game_area", "game_area_unit_grid", "battle_unit_grid", "trait_tracker")]
 script = ExtResource("17_dh340")
 game_state = ExtResource("12_wqbss")
 game_area = NodePath("../GameArea")
 game_area_unit_grid = NodePath("../GameArea/ArenaUnitGrid")
 battle_unit_grid = NodePath("../GameArea/BattleUnitGrid")
+trait_tracker = NodePath("../TraitTracker")
 metadata/_custom_type_script = "uid://dhb2ntovbb66k"
 
 [node name="SceneSpawner" type="Node" parent="BattleHandler"]
 script = ExtResource("12_8kk48")
 scene = ExtResource("18_l0cts")
 metadata/_custom_type_script = "uid://br017kbxir65y"
+
+[node name="TraitTracker" type="Node" parent="." node_paths=PackedStringArray("arena_grid")]
+script = ExtResource("20_ybinm")
+arena_grid = NodePath("../GameArea/ArenaUnitGrid")
+metadata/_custom_type_script = "uid://nd6fjcx1kt82"
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -201,8 +208,8 @@ grow_horizontal = 2
 player_stats = ExtResource("15_54tee")
 arena_grid = NodePath("../../GameArea/ArenaUnitGrid")
 
-[node name="Traits" parent="UI" node_paths=PackedStringArray("arena_grid") instance=ExtResource("17_kvkwr")]
-arena_grid = NodePath("../../GameArea/ArenaUnitGrid")
+[node name="Traits" parent="UI" instance=ExtResource("17_kvkwr")]
+unique_name_in_owner = true
 
 [node name="StartBattleButton" parent="UI" node_paths=PackedStringArray("arena_grid") instance=ExtResource("21_fir7s")]
 anchors_preset = 5
