@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ElfBonus" load_steps=4 format=3 uid="uid://df1f7810cf0w4"]
+
+[ext_resource type="Script" uid="uid://ejvqjqxvo541" path="res://components/modifier_value.gd" id="1_tfowl"]
+[ext_resource type="Script" uid="uid://cg35lrajuwk72" path="res://data/traits/bonuses/elf_bonus.gd" id="2_nyap4"]
+
+[sub_resource type="Resource" id="Resource_tfowl"]
+resource_local_to_scene = true
+script = ExtResource("1_tfowl")
+percent_value = -0.25
+source = "elf_trait"
+metadata/_custom_type_script = "uid://ejvqjqxvo541"
+
+[resource]
+script = ExtResource("2_nyap4")
+modifiers = Dictionary[int, ExtResource("1_tfowl")]({
+2: SubResource("Resource_tfowl")
+})
+metadata/_custom_type_script = "uid://cg35lrajuwk72"

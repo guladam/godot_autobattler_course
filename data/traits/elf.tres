@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="Trait" load_steps=3 format=3 uid="uid://jdan3bxve344"]
+[gd_resource type="Resource" script_class="Trait" load_steps=6 format=3 uid="uid://jdan3bxve344"]
 
 [ext_resource type="Script" uid="uid://dsyxdgrby4ar7" path="res://data/traits/trait.gd" id="1_f47wf"]
 [ext_resource type="Texture2D" uid="uid://b1aup08or8bao" path="res://assets/sprites/traits/elf.png" id="1_mkog6"]
+[ext_resource type="Script" uid="uid://bo67hppbyxnv7" path="res://data/traits/bonuses/trait_bonus.gd" id="3_ce4st"]
+[ext_resource type="Resource" uid="uid://cyv5jtgjhj11b" path="res://data/traits/bonuses/elf_bonus_lvl1.tres" id="4_lj4a4"]
+[ext_resource type="Resource" uid="uid://df1f7810cf0w4" path="res://data/traits/bonuses/elf_bonus_lvl2.tres" id="5_13q1s"]
 
 [resource]
 script = ExtResource("1_f47wf")
 name = "Elf"
 icon = ExtResource("1_mkog6")
-description = ""
 levels = 2
-unit_requirements = Array[int]([2, 5])
-unit_modifiers = Array[PackedScene]([null, null])
+unit_requirements = Array[int]([1, 3])
+trait_bonuses = Array[ExtResource("3_ce4st")]([ExtResource("4_lj4a4"), ExtResource("5_13q1s")])

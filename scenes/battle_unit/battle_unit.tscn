@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bkwflybey1smm"]
+[gd_scene load_steps=23 format=3 uid="uid://bkwflybey1smm"]
 
 [ext_resource type="Script" uid="uid://bq4gnwctciu45" path="res://scenes/battle_unit/battle_unit.gd" id="1_rmpo8"]
 [ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="1_tah2m"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://g6jcquelxqiu" path="res://custom_nodes/target_finder.gd" id="10_nmiut"]
 [ext_resource type="Script" uid="uid://b016fi4sooh3e" path="res://components/attack.gd" id="11_4i2cr"]
 [ext_resource type="Script" uid="uid://br017kbxir65y" path="res://components/scene_spawner.gd" id="12_w8xno"]
+[ext_resource type="Script" uid="uid://cexw2a6ooihoy" path="res://components/modifier_handler.gd" id="13_w8xno"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1myfu"]
 size = Vector2(36, 36)
@@ -268,6 +269,11 @@ metadata/_custom_type_script = "uid://b016fi4sooh3e"
 [node name="MeleeAttackSpawner" type="Node" parent="MeleeAttack"]
 script = ExtResource("12_w8xno")
 metadata/_custom_type_script = "uid://br017kbxir65y"
+
+[node name="ModifierHandler" type="Node" parent="."]
+script = ExtResource("13_w8xno")
+modifier_types = Array[int]([0, 1, 2, 3, 4, 5, 6])
+metadata/_custom_type_script = "uid://cexw2a6ooihoy"
 
 [node name="RangedAttack" type="Node" parent="." node_paths=PackedStringArray("parent", "anchor", "spawn_point", "spawner")]
 script = ExtResource("11_4i2cr")

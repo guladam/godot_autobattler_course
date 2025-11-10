@@ -17,6 +17,7 @@ signal enemy_won
 @export var game_area: PlayArea
 @export var game_area_unit_grid: UnitGrid
 @export var battle_unit_grid: UnitGrid
+@export var trait_tracker: TraitTracker
 
 @onready var scene_spawner: SceneSpawner = $SceneSpawner
 
@@ -31,6 +32,13 @@ func _setup_battle_unit(unit_coord: Vector2i, new_unit: BattleUnit) -> void:
 	new_unit.global_position = game_area.get_global_from_tile(unit_coord) + Vector2(0, -Arena.QUARTER_CELL_SIZE.y)
 	new_unit.tree_exited.connect(_on_battle_unit_died)
 	battle_unit_grid.add_unit(unit_coord, new_unit)
+
+
+func _add_trait_bonuses(new_unit: BattleUnit) -> void:
+	for unit_trait: Trait in new_unit.stats.traits:
+		if trait_tracker.active_traits.has(unit_trait):
+			var trait_bonus := unit_trait.get_active_bonus(trait_tracker.unique_traits[unit_trait])
+			trait_bonus.apply_bonus(new_unit)
 
 
 func _clean_up_fight() -> void:
@@ -50,6 +58,7 @@ func _prepare_fight() -> void:
 		new_unit.stats = unit.stats
 		new_unit.stats.team = UnitStats.Team.PLAYER
 		_setup_battle_unit(unit_coord, new_unit)
+		_add_trait_bonuses(new_unit)
 	
 	for unit_coord: Vector2i in ZOMBIE_TEST_POSITIONS:
 		var new_unit := scene_spawner.spawn_scene(battle_unit_grid) as BattleUnit

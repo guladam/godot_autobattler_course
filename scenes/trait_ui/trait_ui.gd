@@ -10,8 +10,7 @@ extends PanelContainer
 @onready var trait_label: Label = %TraitLabel
 
 
-func update(units: Array[Unit]) -> void:
-	var unique_units := trait_data.get_unique_unit_count(units)
+func update(unique_units: int) -> void:
 	active_units_label.text = str(unique_units)
 	trait_level_labels.text = trait_data.get_levels_bbcode(unique_units)
 	active = trait_data.is_active(unique_units)
