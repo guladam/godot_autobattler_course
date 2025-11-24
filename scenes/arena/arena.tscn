@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://btsdfk3w6ejf7"]
+[gd_scene load_steps=30 format=4 uid="uid://btsdfk3w6ejf7"]
 
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
 [ext_resource type="Script" uid="uid://1v8f0gortgfu" path="res://scenes/arena/arena.gd" id="1_p34ty"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://k04n4d6imqho" path="res://custom_nodes/play_area.gd" id="4_nfvuo"]
 [ext_resource type="Script" uid="uid://dvn2jwl1qt8h2" path="res://custom_nodes/unit_grid.gd" id="4_o6kfo"]
 [ext_resource type="Script" uid="uid://bio7ialwr0utw" path="res://components/tile_highlighter.gd" id="6_0fpan"]
+[ext_resource type="PackedScene" uid="uid://mnkotka8ud76" path="res://scenes/bench_items/bench_items.tscn" id="8_5ilg6"]
 [ext_resource type="Script" uid="uid://dp7sf7u48egxj" path="res://custom_nodes/unit_mover.gd" id="8_pf53d"]
 [ext_resource type="Script" uid="uid://1v7lignn6p14" path="res://custom_nodes/unit_navigation_debug.gd" id="9_l0cts"]
 [ext_resource type="Script" uid="uid://cxgy8nwerioxy" path="res://custom_nodes/unit_spawner.gd" id="11_323go"]
@@ -134,6 +135,10 @@ enabled = false
 play_area = NodePath("..")
 highlight_layer = NodePath("../Highlight")
 tile = Vector2i(3, 0)
+
+[node name="BenchItems" parent="." instance=ExtResource("8_5ilg6")]
+position = Vector2(16, 240)
+metadata/_edit_lock_ = true
 
 [node name="SellPortal" parent="." instance=ExtResource("12_jfrdp")]
 position = Vector2(80, 288)

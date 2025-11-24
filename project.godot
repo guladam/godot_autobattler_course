@@ -68,6 +68,7 @@ test2={
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="player_range"
 2d_physics/layer_4="enemy_range"
+2d_physics/layer_5="items"
 
 [rendering]
 

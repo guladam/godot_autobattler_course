@@ -12,6 +12,7 @@ extends Area2D
 @onready var ability_spawner: SceneSpawner = $AbilitySpawner
 @onready var attack_timer: Timer = $AttackTimer
 @onready var flip_sprite: FlipSprite = $FlipSprite
+@onready var item_handler: ItemHandler = $ItemHandler
 @onready var melee_attack: Attack = $MeleeAttack
 @onready var modifier_handler: ModifierHandler = $ModifierHandler
 @onready var ranged_attack: Attack = $RangedAttack

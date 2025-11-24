@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://mnkotka8ud76"]
+
+[ext_resource type="Script" uid="uid://cqhk3qq0ylkwi" path="res://scenes/bench_items/bench_items.gd" id="1_q000b"]
+
+[node name="BenchItems" type="Node2D"]
+script = ExtResource("1_q000b")
+
+[node name="ItemSlot1" type="Marker2D" parent="."]
+
+[node name="ItemSlot2" type="Marker2D" parent="."]
+position = Vector2(32, 0)
+
+[node name="ItemSlot3" type="Marker2D" parent="."]
+position = Vector2(0, 32)
+
+[node name="ItemSlot4" type="Marker2D" parent="."]
+position = Vector2(32, 32)
+
+[node name="ItemSlot5" type="Marker2D" parent="."]
+position = Vector2(0, 64)
+
+[node name="ItemSlot6" type="Marker2D" parent="."]
+position = Vector2(32, 64)
+
+[node name="ItemSlot7" type="Marker2D" parent="."]
+position = Vector2(0, 96)
+
+[node name="ItemSlot8" type="Marker2D" parent="."]
+position = Vector2(32, 96)

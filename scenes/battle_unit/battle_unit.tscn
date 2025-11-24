@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bkwflybey1smm"]
+[gd_scene load_steps=25 format=3 uid="uid://bkwflybey1smm"]
 
 [ext_resource type="Script" uid="uid://bq4gnwctciu45" path="res://scenes/battle_unit/battle_unit.gd" id="1_rmpo8"]
 [ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="1_tah2m"]
@@ -13,7 +13,9 @@
 [ext_resource type="Script" uid="uid://bfscdqp6aiuqe" path="res://components/flip_sprite.gd" id="10_euuyt"]
 [ext_resource type="Script" uid="uid://g6jcquelxqiu" path="res://custom_nodes/target_finder.gd" id="10_nmiut"]
 [ext_resource type="Script" uid="uid://b016fi4sooh3e" path="res://components/attack.gd" id="11_4i2cr"]
+[ext_resource type="Script" uid="uid://c3gulxltndrkg" path="res://custom_nodes/item_handler.gd" id="12_a0pnp"]
 [ext_resource type="Script" uid="uid://br017kbxir65y" path="res://components/scene_spawner.gd" id="12_w8xno"]
+[ext_resource type="Resource" uid="uid://hlytcy68u6yc" path="res://data/items/item_db.tres" id="13_kmmjn"]
 [ext_resource type="Script" uid="uid://cexw2a6ooihoy" path="res://components/modifier_handler.gd" id="13_w8xno"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1myfu"]
@@ -257,6 +259,11 @@ process_callback = 0
 script = ExtResource("10_euuyt")
 sprite = NodePath("../Skin")
 metadata/_custom_type_script = "uid://bfscdqp6aiuqe"
+
+[node name="ItemHandler" type="Node" parent="."]
+script = ExtResource("12_a0pnp")
+item_db = ExtResource("13_kmmjn")
+metadata/_custom_type_script = "uid://c3gulxltndrkg"
 
 [node name="MeleeAttack" type="Node" parent="." node_paths=PackedStringArray("parent", "anchor", "spawn_point", "spawner")]
 script = ExtResource("11_4i2cr")

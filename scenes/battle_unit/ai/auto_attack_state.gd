@@ -5,7 +5,7 @@ signal target_left_range
 signal target_died
 
 var actor_unit: BattleUnit
-#var as_modifier: Modifier
+var as_modifier: Modifier
 var target: BattleUnit
 
 
@@ -16,7 +16,9 @@ func _init(new_actor: Node, current_target: BattleUnit) -> void:
 
 func enter() -> void:
 	actor_unit = actor as BattleUnit
-	#as_modifier = actor_unit.modifier_handler.get_modifier(Modifier.Type.UNIT_ATKSPEED)
+	as_modifier = actor_unit.modifier_handler.get_modifier(Modifier.Type.UNIT_ATKSPEED)
+	
+	as_modifier.changed.connect(_setup_attack_timer)
 	actor_unit.detect_range.area_exited.connect(_on_detect_range_exited)
 	actor_unit.attack_timer.timeout.connect(_attack)
 	_setup_attack_timer()

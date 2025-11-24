@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhl7tle8lgews"]
+
+[ext_resource type="Texture2D" uid="uid://dpugfvwylcqox" path="res://assets/sprites/item_background.png" id="1_cejgj"]
+[ext_resource type="Script" uid="uid://024u0ridhpwq" path="res://scenes/bench_item/bench_item.gd" id="1_d16qx"]
+[ext_resource type="Resource" uid="uid://cp4xakg8px5n6" path="res://data/items/gloves.tres" id="2_d6wef"]
+[ext_resource type="Texture2D" uid="uid://dxcdu20yfc72" path="res://assets/sprites/items.png" id="2_d16qx"]
+[ext_resource type="Script" uid="uid://bpfvys3yg0516" path="res://components/packed_sprite2d.gd" id="3_d6wef"]
+[ext_resource type="Script" uid="uid://d322rsxkkib3n" path="res://components/drag_and_drop.gd" id="4_7dexp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsoew"]
+size = Vector2(24, 24)
+
+[node name="BenchItem" type="Area2D"]
+collision_layer = 16
+monitorable = false
+script = ExtResource("1_d16qx")
+item = ExtResource("2_d6wef")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cejgj")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bsoew")
+
+[node name="PackedSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_d16qx")
+region_enabled = true
+region_rect = Rect2(32, 416, 32, 32)
+script = ExtResource("3_d6wef")
+coordinates = Vector2i(1, 13)
+metadata/_custom_type_script = "uid://bpfvys3yg0516"
+metadata/_edit_lock_ = true
+
+[node name="DragAndDrop" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("4_7dexp")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://d322rsxkkib3n"
