@@ -34,6 +34,15 @@ func _setup_battle_unit(unit_coord: Vector2i, new_unit: BattleUnit) -> void:
 	battle_unit_grid.add_unit(unit_coord, new_unit)
 
 
+func _add_items(unit: Unit, new_unit: BattleUnit) -> void:
+	unit.item_handler.copy_items_to(new_unit.item_handler)	
+	new_unit.item_handler.items_changed.connect(_on_battle_unit_items_changed.bind(unit, new_unit))
+	new_unit.item_handler.item_removed.connect(_on_battle_unit_item_removed.bind(new_unit))
+	
+	for item: Item in new_unit.item_handler.equipped_items:
+		item.apply_modifiers(new_unit)
+
+
 func _add_trait_bonuses(new_unit: BattleUnit) -> void:
 	for unit_trait: Trait in new_unit.stats.traits:
 		if trait_tracker.active_traits.has(unit_trait):
@@ -58,6 +67,7 @@ func _prepare_fight() -> void:
 		new_unit.stats = unit.stats
 		new_unit.stats.team = UnitStats.Team.PLAYER
 		_setup_battle_unit(unit_coord, new_unit)
+		_add_items(unit, new_unit)
 		_add_trait_bonuses(new_unit)
 	
 	for unit_coord: Vector2i in ZOMBIE_TEST_POSITIONS:
@@ -74,6 +84,9 @@ func _prepare_fight() -> void:
 	
 	for battle_unit: BattleUnit in battle_units:
 		battle_unit.unit_ai.enabled = true
+		
+		for item: Item in battle_unit.item_handler.equipped_items:
+			item.apply_bonus_effect(battle_unit)
 
 
 func _on_battle_unit_died() -> void:
@@ -88,6 +101,18 @@ func _on_battle_unit_died() -> void:
 	if get_tree().get_node_count_in_group("player_units") == 0:
 		game_state.current_phase = GameState.Phase.PREPARATION
 		enemy_won.emit()
+
+
+func _on_battle_unit_items_changed(unit: Unit, battle_unit: BattleUnit) -> void:
+	battle_unit.item_handler.copy_items_to(unit.item_handler)
+	
+	for item: Item in battle_unit.item_handler.equipped_items:
+		item.remove_modifiers(battle_unit)
+		item.apply_modifiers(battle_unit)
+
+
+func _on_battle_unit_item_removed(item: Item, battle_unit: BattleUnit) -> void:
+	item.remove_modifiers(battle_unit)
 
 
 func _on_game_state_changed() -> void:

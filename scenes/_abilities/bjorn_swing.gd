@@ -11,7 +11,9 @@ func use() -> void:
 	hit_box.damage = base_damage_per_tier[caster.stats.tier-1]
 	hit_box.collision_layer = caster.stats.get_team_collision_layer()
 	hit_box.collision_mask = caster.stats.get_team_collision_mask()
-	hit_box.damage += caster.stats.ability_power
+	
+	var base_ap := caster.stats.ability_power
+	hit_box.damage += roundi(caster.modifier_handler.get_modified_value(base_ap, Modifier.Type.UNIT_AP))
 
 	SFXPlayer.play(sound)
 	animation_player.play("swing")

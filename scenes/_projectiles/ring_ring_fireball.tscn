@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://b1wn48bk112a2"]
+
+[ext_resource type="Script" uid="uid://ejyuuhn78frt" path="res://components/projectile.gd" id="1_rgycf"]
+[ext_resource type="Texture2D" uid="uid://dcvc1x3hw0lut" path="res://assets/sprites/effects_projectiles/fireball.png" id="2_nwfrk"]
+[ext_resource type="Script" uid="uid://biavqqe1mrjia" path="res://components/hitbox.gd" id="3_0wn2y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1ue1"]
+atlas = ExtResource("2_nwfrk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65vcj"]
+atlas = ExtResource("2_nwfrk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnyxn"]
+atlas = ExtResource("2_nwfrk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmhd0"]
+atlas = ExtResource("2_nwfrk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6o8m"]
+atlas = ExtResource("2_nwfrk")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxk13"]
+atlas = ExtResource("2_nwfrk")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2dys2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1ue1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65vcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnyxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmhd0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6o8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxk13")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yx7yn"]
+size = Vector2(10, 4)
+
+[node name="RingRingFireball" type="Node2D"]
+script = ExtResource("1_rgycf")
+speed = 200
+metadata/_custom_type_script = "uid://ejyuuhn78frt"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_2dys2")
+animation = &"fly"
+autoplay = "fly"
+frame_progress = 0.088225104
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("3_0wn2y")
+metadata/_custom_type_script = "uid://biavqqe1mrjia"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_yx7yn")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="ItemDB" load_steps=13 format=3 uid="uid://hlytcy68u6yc"]
+
+[ext_resource type="Script" uid="uid://dg01v8kfef3f0" path="res://data/items/item_recipe.gd" id="1_j0gvu"]
+[ext_resource type="Resource" uid="uid://dw168maw12qh3" path="res://data/items/ring.tres" id="2_08acy"]
+[ext_resource type="Script" uid="uid://rx1qah28vttk" path="res://data/items/item_db.gd" id="2_rbtw8"]
+[ext_resource type="Resource" uid="uid://daypjmkkj5hgb" path="res://data/items/sword.tres" id="3_50vly"]
+[ext_resource type="Resource" uid="uid://cp4xakg8px5n6" path="res://data/items/gloves.tres" id="4_3c0jo"]
+[ext_resource type="Resource" uid="uid://pldk5d0k2c7" path="res://data/items/ringring.tres" id="5_65t8j"]
+
+[sub_resource type="Resource" id="Resource_b2bp3"]
+script = ExtResource("1_j0gvu")
+source_item_1 = ExtResource("2_08acy")
+source_item_2 = ExtResource("3_50vly")
+metadata/_custom_type_script = "uid://dg01v8kfef3f0"
+
+[sub_resource type="Resource" id="Resource_deo3c"]
+script = ExtResource("1_j0gvu")
+source_item_1 = ExtResource("2_08acy")
+source_item_2 = ExtResource("4_3c0jo")
+metadata/_custom_type_script = "uid://dg01v8kfef3f0"
+
+[sub_resource type="Resource" id="Resource_u6g05"]
+script = ExtResource("1_j0gvu")
+source_item_1 = ExtResource("2_08acy")
+source_item_2 = ExtResource("2_08acy")
+result = ExtResource("5_65t8j")
+metadata/_custom_type_script = "uid://dg01v8kfef3f0"
+
+[sub_resource type="Resource" id="Resource_l7kx7"]
+script = ExtResource("1_j0gvu")
+source_item_1 = ExtResource("4_3c0jo")
+source_item_2 = ExtResource("3_50vly")
+metadata/_custom_type_script = "uid://dg01v8kfef3f0"
+
+[sub_resource type="Resource" id="Resource_6rqr8"]
+script = ExtResource("1_j0gvu")
+source_item_1 = ExtResource("4_3c0jo")
+source_item_2 = ExtResource("4_3c0jo")
+metadata/_custom_type_script = "uid://dg01v8kfef3f0"
+
+[sub_resource type="Resource" id="Resource_hp31h"]
+script = ExtResource("1_j0gvu")
+source_item_1 = ExtResource("3_50vly")
+source_item_2 = ExtResource("3_50vly")
+metadata/_custom_type_script = "uid://dg01v8kfef3f0"
+
+[resource]
+script = ExtResource("2_rbtw8")
+recipes = Array[ExtResource("1_j0gvu")]([SubResource("Resource_b2bp3"), SubResource("Resource_deo3c"), SubResource("Resource_u6g05"), SubResource("Resource_l7kx7"), SubResource("Resource_6rqr8"), SubResource("Resource_hp31h")])
+metadata/_custom_type_script = "uid://rx1qah28vttk"

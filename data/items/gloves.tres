@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://cp4xakg8px5n6"]
+
+[ext_resource type="Script" uid="uid://ejvqjqxvo541" path="res://components/modifier_value.gd" id="1_dyvg7"]
+[ext_resource type="Script" uid="uid://dtt7wiq1c3ubj" path="res://data/items/item.gd" id="2_33y6e"]
+
+[sub_resource type="Resource" id="Resource_dyvg7"]
+resource_local_to_scene = true
+script = ExtResource("1_dyvg7")
+percent_value = -0.7
+metadata/_custom_type_script = "uid://ejvqjqxvo541"
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_33y6e")
+name = "Gloves"
+id = &"gloves"
+description = "+10% ATK Speed"
+component = true
+sprite_coordinates = Vector2i(1, 13)
+modifiers = Dictionary[int, ExtResource("1_dyvg7")]({
+2: SubResource("Resource_dyvg7")
+})
+metadata/_custom_type_script = "uid://dtt7wiq1c3ubj"

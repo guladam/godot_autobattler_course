@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dctbclookhob7"]
+[gd_scene load_steps=16 format=3 uid="uid://dctbclookhob7"]
 
 [ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="1_6prxo"]
 [ext_resource type="Script" uid="uid://ieab06tk83h4" path="res://scenes/unit/unit.gd" id="1_hvsd5"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://c7pf7qph33dgb" path="res://scenes/mana_bar/mana_bar.tscn" id="6_7jhsn"]
 [ext_resource type="Script" uid="uid://ccks8se2fxj6f" path="res://components/outline_highlighter.gd" id="7_w1ko1"]
 [ext_resource type="Script" uid="uid://b40qonitqky5l" path="res://custom_nodes/unit_animations.gd" id="9_tsr1y"]
+[ext_resource type="Script" uid="uid://c3gulxltndrkg" path="res://custom_nodes/item_handler.gd" id="10_1ifho"]
+[ext_resource type="Resource" uid="uid://hlytcy68u6yc" path="res://data/items/item_db.tres" id="11_u15f5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpqbl"]
 size = Vector2(36, 36)
@@ -49,6 +51,11 @@ stats = ExtResource("2_gqc60")
 [node name="DragAndDrop" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("4_4lsat")
 target = NodePath("..")
+
+[node name="ItemHandler" type="Node" parent="."]
+script = ExtResource("10_1ifho")
+item_db = ExtResource("11_u15f5")
+metadata/_custom_type_script = "uid://c3gulxltndrkg"
 
 [node name="VelocityBasedRotation" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("5_rio0o")

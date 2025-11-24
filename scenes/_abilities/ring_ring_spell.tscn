@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsssg14gw7qkr"]
+
+[ext_resource type="Script" uid="uid://itnp8f3terby" path="res://scenes/_abilities/ring_ring_spell.gd" id="1_m7wvs"]
+[ext_resource type="Script" uid="uid://b016fi4sooh3e" path="res://components/attack.gd" id="2_gbrqi"]
+[ext_resource type="Script" uid="uid://br017kbxir65y" path="res://components/scene_spawner.gd" id="3_wlhq6"]
+[ext_resource type="PackedScene" uid="uid://b1wn48bk112a2" path="res://scenes/_projectiles/ring_ring_fireball.tscn" id="4_utxfe"]
+
+[node name="RingRingSpell" type="Node2D"]
+script = ExtResource("1_m7wvs")
+damage = 10
+metadata/_custom_type_script = "uid://cu5n5vppwn6i3"
+
+[node name="Attack" type="Node" parent="." node_paths=PackedStringArray("spawner")]
+script = ExtResource("2_gbrqi")
+spawner = NodePath("FireballSpawner")
+metadata/_custom_type_script = "uid://b016fi4sooh3e"
+
+[node name="FireballSpawner" type="Node" parent="Attack"]
+script = ExtResource("3_wlhq6")
+scene = ExtResource("4_utxfe")
+metadata/_custom_type_script = "uid://br017kbxir65y"
