@@ -7,6 +7,7 @@ const HOVER_BORDER_COLOR := Color("fafa82")
 
 @export var player_stats: PlayerStats
 @export var unit_stats: UnitStats : set = _set_unit_stats
+@export var unit_grids: Array[UnitGrid]
 @export var buy_sound: AudioStream
 
 @onready var traits: Label = %Traits
@@ -64,6 +65,14 @@ func _on_player_stats_changed() -> void:
 
 func _on_pressed() -> void:
 	if bought:
+		return
+	
+	var grids_full := unit_grids and unit_grids.all(
+		func(grid: UnitGrid): return grid.is_grid_full()
+	)
+	
+	if grids_full:
+		TooltipHandler.show_timed_popup("No available space for units!", 2.0)
 		return
 	
 	bought = true

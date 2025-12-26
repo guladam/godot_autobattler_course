@@ -16,6 +16,17 @@ func _ready() -> void:
 		area_exited.connect(_on_area_exited)
 		drag_and_drop.drag_canceled.connect(_on_drag_canceled)
 		drag_and_drop.dropped.connect(_on_dropped)
+		input_event.connect(_on_input_event)
+
+
+func _get_tooltip() -> DetailedTooltip:
+	var new_tooltip := TooltipHandler.DETAILED_TOOLTIP.instantiate() as DetailedTooltip
+	var data := new_tooltip.DetailedTooltipData.new()
+	data.texture = packed_sprite_2d.get_texture_as_atlas()
+	data.title = item.name
+	data.description = item.description
+	new_tooltip.setup(data)
+	return new_tooltip
 
 
 func _set_item(new_item: Item) -> void:
@@ -48,3 +59,12 @@ func _on_dropped(starting_position: Vector2) -> void:
 			return
 	
 	global_position = starting_position
+
+
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event.is_action_pressed("tooltip"):
+		TooltipHandler.popup.show_popup(
+			_get_tooltip(),
+			get_global_mouse_position()
+		)
+		get_viewport().set_input_as_handled()

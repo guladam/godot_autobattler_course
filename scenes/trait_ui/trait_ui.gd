@@ -10,10 +10,29 @@ extends PanelContainer
 @onready var trait_label: Label = %TraitLabel
 
 
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed("tooltip"):
+		TooltipHandler.popup.show_popup(
+			_get_trait_tooltip(),
+			get_global_mouse_position()
+		)
+		accept_event()
+
+
 func update(unique_units: int) -> void:
 	active_units_label.text = str(unique_units)
 	trait_level_labels.text = trait_data.get_levels_bbcode(unique_units)
 	active = trait_data.is_active(unique_units)
+
+
+func _get_trait_tooltip() -> DetailedTooltip:
+	var new_tooltip := TooltipHandler.DETAILED_TOOLTIP.instantiate() as DetailedTooltip
+	var data := new_tooltip.DetailedTooltipData.new()
+	data.texture = trait_data.icon
+	data.title = trait_data.name
+	data.description = trait_data.description
+	new_tooltip.setup(data, 150.0)
+	return new_tooltip
 
 
 func _set_trait_data(value: Trait) -> void:

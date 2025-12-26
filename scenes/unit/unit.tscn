@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dctbclookhob7"]
+[gd_scene load_steps=17 format=3 uid="uid://dctbclookhob7"]
 
 [ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="1_6prxo"]
 [ext_resource type="Script" uid="uid://ieab06tk83h4" path="res://scenes/unit/unit.gd" id="1_hvsd5"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://b40qonitqky5l" path="res://custom_nodes/unit_animations.gd" id="9_tsr1y"]
 [ext_resource type="Script" uid="uid://c3gulxltndrkg" path="res://custom_nodes/item_handler.gd" id="10_1ifho"]
 [ext_resource type="Resource" uid="uid://hlytcy68u6yc" path="res://data/items/item_db.tres" id="11_u15f5"]
+[ext_resource type="Script" uid="uid://5pe3u2nqnf1w" path="res://custom_nodes/unit_tooltip_handler.gd" id="15_u15f5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpqbl"]
 size = Vector2(36, 36)
@@ -72,6 +73,11 @@ outline_thickness = 2
 [node name="UnitAnimations" type="Node" parent="." node_paths=PackedStringArray("unit")]
 script = ExtResource("9_tsr1y")
 unit = NodePath("..")
+
+[node name="UnitTooltipHandler" type="Node" parent="." node_paths=PackedStringArray("unit")]
+script = ExtResource("15_u15f5")
+unit = NodePath("..")
+metadata/_custom_type_script = "uid://5pe3u2nqnf1w"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

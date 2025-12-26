@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ifhs2q8aymex"]
+
+[ext_resource type="Texture2D" uid="uid://dpugfvwylcqox" path="res://assets/sprites/item_background.png" id="1_nrjmy"]
+[ext_resource type="Script" uid="uid://faml6ldpsgsv" path="res://scenes/item_ui/item_ui.gd" id="2_m5h0m"]
+[ext_resource type="Texture2D" uid="uid://dxcdu20yfc72" path="res://assets/sprites/items.png" id="2_qigsa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5h0m"]
+resource_local_to_scene = true
+atlas = ExtResource("2_qigsa")
+region = Rect2(32, 416, 32, 32)
+
+[node name="ItemUI" type="TextureRect"]
+offset_right = 24.0
+offset_bottom = 24.0
+mouse_filter = 0
+texture = ExtResource("1_nrjmy")
+stretch_mode = 5
+script = ExtResource("2_m5h0m")
+tooltip_offset = Vector2i(6, 6)
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_m5h0m")

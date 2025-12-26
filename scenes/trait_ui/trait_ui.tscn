@@ -72,6 +72,7 @@ unique_name_in_owner = true
 clip_contents = false
 custom_minimum_size = Vector2(28, 16)
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/default_color = Color(0.666667, 0.666667, 0.666667, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_gyayg")

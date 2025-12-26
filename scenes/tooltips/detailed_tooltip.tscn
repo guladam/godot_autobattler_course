@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw7klrmt8unc"]
+
+[ext_resource type="Texture2D" uid="uid://wxshjtwjoc31" path="res://assets/sprites/traits/human.png" id="1_hrvoe"]
+[ext_resource type="Script" uid="uid://dqmnsba5rq3k7" path="res://scenes/tooltips/detailed_tooltip.gd" id="1_uk1pb"]
+[ext_resource type="FontFile" uid="uid://8di0jvr25vat" path="res://assets/font/m5x7.ttf" id="2_uk1pb"]
+
+[node name="DetailedTooltip" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+script = ExtResource("1_uk1pb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_hrvoe")
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tooltip title"
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_uk1pb")
+bbcode_enabled = true
+text = "Here's the detailed 
+description of the tooltip 
+window. Here's the
+detailed description
+of the tooltip window."
+fit_content = true
+autowrap_mode = 0

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpak6oui1op0b"]
+
+[ext_resource type="PackedScene" uid="uid://b7dwbdvts84k6" path="res://scenes/tooltips/game_popup.tscn" id="1_dusua"]
+[ext_resource type="Script" uid="uid://cgd0kpntywrvq" path="res://scenes/tooltips/tooltip_handler.gd" id="1_f15qr"]
+
+[node name="TooltipHandler" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_f15qr")
+
+[node name="Popup" parent="." instance=ExtResource("1_dusua")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Popup2" parent="." instance=ExtResource("1_dusua")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
