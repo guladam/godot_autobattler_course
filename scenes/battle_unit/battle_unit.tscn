@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bkwflybey1smm"]
+[gd_scene load_steps=26 format=3 uid="uid://bkwflybey1smm"]
 
 [ext_resource type="Script" uid="uid://bq4gnwctciu45" path="res://scenes/battle_unit/battle_unit.gd" id="1_rmpo8"]
 [ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="1_tah2m"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://br017kbxir65y" path="res://components/scene_spawner.gd" id="12_w8xno"]
 [ext_resource type="Resource" uid="uid://hlytcy68u6yc" path="res://data/items/item_db.tres" id="13_kmmjn"]
 [ext_resource type="Script" uid="uid://cexw2a6ooihoy" path="res://components/modifier_handler.gd" id="13_w8xno"]
+[ext_resource type="Script" uid="uid://5pe3u2nqnf1w" path="res://custom_nodes/unit_tooltip_handler.gd" id="18_kmmjn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1myfu"]
 size = Vector2(36, 36)
@@ -304,6 +305,11 @@ script = ExtResource("9_hf5vq")
 debug_label = NodePath("../FSMDebugLabel")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bml2bk8y0qsx4"
+
+[node name="UnitTooltipHandler" type="Node" parent="." node_paths=PackedStringArray("unit")]
+script = ExtResource("18_kmmjn")
+unit = NodePath("..")
+metadata/_custom_type_script = "uid://5pe3u2nqnf1w"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
