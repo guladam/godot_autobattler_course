@@ -200,8 +200,9 @@ metadata/_custom_type_script = "uid://nd6fjcx1kt82"
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Shop" parent="UI" instance=ExtResource("14_l7l4v")]
+[node name="Shop" parent="UI" node_paths=PackedStringArray("unit_grids") instance=ExtResource("14_l7l4v")]
 unique_name_in_owner = true
+unit_grids = [NodePath("../../Bench/BenchUnitGrid"), NodePath("../../GameArea/ArenaUnitGrid")]
 
 [node name="TeamSizeUI" parent="UI" node_paths=PackedStringArray("arena_grid") instance=ExtResource("14_5evl7")]
 anchors_preset = 5

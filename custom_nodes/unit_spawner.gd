@@ -30,8 +30,10 @@ func _get_first_available_area() -> PlayArea:
 
 func spawn_unit(unit: UnitStats) -> void:
 	var area := _get_first_available_area()
-	# TODO in the future, throw a popup error message here!
-	assert(area, "No available space to add unit to!")
+	
+	if not area:
+		TooltipHandler.show_timed_popup("No available space for units!", 2.0)
+		return
 	
 	var new_unit := unit_scene_spawner.spawn_scene(area.unit_grid) as Unit
 	var tile := area.unit_grid.get_first_empty_tile()
