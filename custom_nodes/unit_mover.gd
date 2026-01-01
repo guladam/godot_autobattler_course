@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func setup_unit(unit: Unit) -> void:
-	unit.drag_and_drop.drag_started.connect(_on_unit_drag_started.bind(unit))
+	unit.drag_and_drop.drag_started.connect(_set_highlighters.bind(true))
 	unit.drag_and_drop.drag_canceled.connect(_on_unit_drag_canceled.bind(unit))
 	unit.drag_and_drop.dropped.connect(_on_unit_dropped.bind(unit))
 
@@ -35,11 +35,7 @@ func _get_play_area_for_position(global: Vector2) -> int:
 
 
 func _reset_unit_to_starting_position(starting_position: Vector2, unit: Unit) -> void:
-	var i := _get_play_area_for_position(starting_position)
-	var tile := play_areas[i].get_tile_from_global(starting_position)
-	
 	unit.reset_after_dragging(starting_position)
-	play_areas[i].unit_grid.add_unit(tile, unit)
 	SFXPlayer.play(unit_place_sound)
 
 
@@ -47,15 +43,6 @@ func _move_unit(unit: Unit, play_area: PlayArea, tile: Vector2i) -> void:
 	play_area.unit_grid.add_unit(tile, unit)
 	unit.global_position = play_area.get_global_from_tile(tile) - Arena.HALF_CELL_SIZE
 	unit.reparent(play_area.unit_grid)
-
-
-func _on_unit_drag_started(unit: Unit) -> void:
-	_set_highlighters(true)
-	
-	var i := _get_play_area_for_position(unit.global_position)
-	if i > -1:
-		var tile := play_areas[i].get_tile_from_global(unit.global_position)
-		play_areas[i].unit_grid.remove_unit(tile)
 
 
 func _on_unit_drag_canceled(starting_position: Vector2, unit: Unit) -> void:
@@ -79,6 +66,9 @@ func _on_unit_dropped(starting_position: Vector2, unit: Unit) -> void:
 	var old_tile := old_area.get_tile_from_global(starting_position)
 	var new_area := play_areas[drop_area_index]
 	var new_tile := new_area.get_hovered_tile()
+	
+	# remove dragged unit from old grid
+	old_area.unit_grid.remove_unit(old_tile)
 	
 	# swap units if we have to
 	if new_area.unit_grid.is_tile_occupied(new_tile):

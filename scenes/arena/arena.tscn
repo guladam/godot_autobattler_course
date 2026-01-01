@@ -144,6 +144,7 @@ metadata/_edit_lock_ = true
 position = Vector2(80, 288)
 
 [node name="UnitNavigationDebug" type="Node2D" parent="." node_paths=PackedStringArray("game_area")]
+visible = false
 position = Vector2(160, 32)
 script = ExtResource("9_l0cts")
 color = Color(0.796078, 0.34902, 0.45098, 0.517647)
@@ -171,6 +172,7 @@ metadata/_custom_type_script = "uid://br017kbxir65y"
 
 [node name="UnitCombiner" type="Node" parent="." node_paths=PackedStringArray("buffer_timer")]
 script = ExtResource("14_aaca4")
+game_state = ExtResource("12_wqbss")
 buffer_timer = NodePath("BufferTimer")
 combine_sound = ExtResource("14_4ebmt")
 

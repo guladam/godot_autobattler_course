@@ -14,8 +14,6 @@ func _ready() -> void:
 	for i in equipped_items.size():
 		if equipped_items[i]:
 			equipped_items[i].equip_index = i
-	
-	items_changed.connect(func(): print(equipped_items))
 
 
 func add_item(new_item: Item) -> bool:

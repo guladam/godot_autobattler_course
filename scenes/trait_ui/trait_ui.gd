@@ -31,10 +31,10 @@ func _get_trait_tooltip() -> DetailedTooltip:
 	data.texture = trait_data.icon
 	data.title = trait_data.name
 	data.description = trait_data.description
-	new_tooltip.setup(data, 150.0)
+	data.min_size_x = 150.0
+	new_tooltip.tooltip_data = data
 	return new_tooltip
-
-
+  
 func _set_trait_data(value: Trait) -> void:
 	trait_data = value
 	

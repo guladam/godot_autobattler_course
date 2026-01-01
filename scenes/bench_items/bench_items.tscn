@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://mnkotka8ud76"]
+[gd_scene load_steps=4 format=3 uid="uid://mnkotka8ud76"]
 
 [ext_resource type="Script" uid="uid://cqhk3qq0ylkwi" path="res://scenes/bench_items/bench_items.gd" id="1_q000b"]
+[ext_resource type="Script" uid="uid://br017kbxir65y" path="res://components/scene_spawner.gd" id="2_f7nds"]
+[ext_resource type="PackedScene" uid="uid://dhl7tle8lgews" path="res://scenes/bench_item/bench_item.tscn" id="3_ugyjw"]
 
 [node name="BenchItems" type="Node2D"]
 script = ExtResource("1_q000b")
@@ -27,3 +29,8 @@ position = Vector2(0, 96)
 
 [node name="ItemSlot8" type="Marker2D" parent="."]
 position = Vector2(32, 96)
+
+[node name="SceneSpawner" type="Node" parent="."]
+script = ExtResource("2_f7nds")
+scene = ExtResource("3_ugyjw")
+metadata/_custom_type_script = "uid://br017kbxir65y"

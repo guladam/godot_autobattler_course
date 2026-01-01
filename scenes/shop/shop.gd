@@ -26,6 +26,7 @@ func _roll_units() -> void:
 		var new_card := card_spawner.spawn_scene(shop_cards) as UnitCard
 		new_card.unit_stats = unit_pool.get_random_unit_by_rarity(rarity)
 		new_card.unit_grids = unit_grids
+		new_card.update()
 		new_card.unit_bought.connect(_on_unit_bought)
 
 

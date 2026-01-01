@@ -32,7 +32,7 @@ func _get_item_tooltip() -> DetailedTooltip:
 	data.texture = icon.texture.duplicate()
 	data.title = item.name
 	data.description = item.description
-	new_tooltip.setup(data)
+	new_tooltip.tooltip_data = data
 	return new_tooltip
 
 

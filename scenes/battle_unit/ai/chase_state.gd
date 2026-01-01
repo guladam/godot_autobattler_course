@@ -11,13 +11,17 @@ func enter() -> void:
 	actor_unit = actor as BattleUnit
 	
 	if _has_target_in_range():
-		_end_chase()
+		_end_chase.call_deferred()
 	else:
 		actor_unit.target_finder.find_target()
 		actor_unit.target_finder.targets_in_range_changed.connect(_on_targets_in_range_changed)
 
 
 func exit() -> void:
+	if tween:
+		tween.kill()
+		tween = null
+		
 	if actor_unit.target_finder.targets_in_range_changed.is_connected(_on_targets_in_range_changed):
 		actor_unit.target_finder.targets_in_range_changed.disconnect(_on_targets_in_range_changed)
 
@@ -36,7 +40,7 @@ func chase() -> void:
 	if new_pos == Vector2(-1, -1):
 		# we might already have a new target if a unit died or something?
 		if _has_target_in_range():
-			_end_chase()
+			_end_chase.call_deferred()
 		else:
 			actor_unit.animation_player.play("RESET")
 			stuck.emit()
@@ -46,19 +50,15 @@ func chase() -> void:
 	tween = actor_unit.create_tween()
 	tween.tween_callback(actor_unit.animation_player.play.bind("move"))
 	tween.tween_property(actor_unit, "global_position", new_pos, UnitStats.MOVE_ONE_TILE_SPEED)
-	tween.finished.connect(
-		func():
-			tween.kill()
-			
-			if _has_target_in_range():
-				_end_chase()
-			else:
-				chase()
-	)
+	tween.finished.connect(_on_tween_finished)
 
 
 func _end_chase() -> void:
-	target_reached.emit.call_deferred(actor_unit.target_finder.targets_in_range[0])
+	var target := actor_unit.target_finder.targets_in_range[0]
+	if is_instance_valid(target):
+		target_reached.emit(target)
+	else:
+		stuck.emit()
 
 
 func _has_target_in_range() -> bool:
@@ -67,4 +67,13 @@ func _has_target_in_range() -> bool:
 
 func _on_targets_in_range_changed() -> void:
 	if not tween and _has_target_in_range():
-		_end_chase()
+		_end_chase.call_deferred()
+
+
+func _on_tween_finished() -> void:
+	tween.kill()
+	
+	if _has_target_in_range():
+		_end_chase.call_deferred()
+	else:
+		chase()

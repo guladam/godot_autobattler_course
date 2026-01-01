@@ -25,7 +25,7 @@ func _get_tooltip() -> DetailedTooltip:
 	data.texture = packed_sprite_2d.get_texture_as_atlas()
 	data.title = item.name
 	data.description = item.description
-	new_tooltip.setup(data)
+	new_tooltip.tooltip_data = data
 	return new_tooltip
 
 
