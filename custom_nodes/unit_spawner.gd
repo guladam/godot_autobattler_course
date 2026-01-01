@@ -10,6 +10,12 @@ signal unit_spawned(unit: Unit)
 @onready var unit_scene_spawner: SceneSpawner = $SceneSpawner
 
 
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("test1"):
+		spawn_unit(preload("uid://dyqvoxv3vg6hp"))
+
+
 func _get_first_available_area() -> PlayArea:
 	var bench_full := bench.unit_grid.is_grid_full()
 	var game_area_full := game_area.unit_grid.is_grid_full()
@@ -32,4 +38,6 @@ func spawn_unit(unit: UnitStats) -> void:
 	area.unit_grid.add_unit(tile, new_unit)
 	new_unit.global_position = area.get_global_from_tile(tile) - Arena.HALF_CELL_SIZE
 	new_unit.stats = unit
+	new_unit.stats.reset_health()
+	new_unit.stats.reset_mana()
 	unit_spawned.emit(new_unit)

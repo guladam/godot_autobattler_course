@@ -7,8 +7,8 @@ signal quick_sell_pressed
 @export var stats: UnitStats : set = _set_stats
 
 @onready var skin: PackedSprite2D = $Visuals/Skin
-@onready var health_bar: ProgressBar = $HealthBar
-@onready var mana_bar: ProgressBar = $ManaBar
+@onready var health_bar: HealthBar = $HealthBar
+@onready var mana_bar: ManaBar = $ManaBar
 @onready var tier_icon: TierIcon = $TierIcon
 @onready var drag_and_drop: DragAndDrop = $DragAndDrop
 @onready var item_handler: ItemHandler = $ItemHandler
@@ -41,6 +41,8 @@ func _set_stats(value: UnitStats) -> void:
 	
 	if not Engine.is_editor_hint():
 		stats = value.duplicate()
+		health_bar.stats = stats
+		mana_bar.stats = stats
 	
 	skin.coordinates = stats.skin_coordinates
 	tier_icon.stats = stats

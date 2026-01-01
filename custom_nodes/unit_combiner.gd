@@ -1,19 +1,23 @@
 class_name UnitCombiner
 extends Node
 
+@export var game_state: GameState
 @export var buffer_timer: Timer
 @export var combine_sound: AudioStream
 
 var queued_updates := 0
 var tween: Tween
+var enabled := true
 
 
 func _ready() -> void:
 	buffer_timer.timeout.connect(_on_buffer_timer_timeout)
+	game_state.changed.connect(_on_game_state_changed)
 
 
 func queue_unit_combination_update() -> void:
-	buffer_timer.start()
+	if enabled:
+		buffer_timer.start()
 
 
 func _update_unit_combinations(tier: int) -> void:
@@ -93,3 +97,12 @@ func _on_units_combined(tier: int) -> void:
 		queued_updates -= 1
 		if queued_updates >= 1:
 			_update_unit_combinations(1)
+
+
+func _on_game_state_changed() -> void:
+	match game_state.current_phase:
+		GameState.Phase.PREPARATION:
+			enabled = true
+			queue_unit_combination_update()
+		GameState.Phase.BATTLE:
+			enabled = false

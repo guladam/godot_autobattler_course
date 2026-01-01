@@ -1,14 +1,15 @@
 class_name BenchItems
 extends Node2D
 
-const BENCH_ITEM = preload("uid://dhl7tle8lgews")
+@onready var scene_spawner: SceneSpawner = $SceneSpawner
 
 var slots: Array[Marker2D]
 
 
 func _ready() -> void:
-	for marker: Marker2D in get_children():
-		slots.append(marker)
+	for node: Node in get_children():
+		if node is Marker2D:
+			slots.append(node)
 	
 	var items := [
 		preload("uid://cp4xakg8px5n6"),
@@ -31,8 +32,7 @@ func add_item(item: Item) -> void:
 	if not slot:
 		print("No empty space for item!")
 	
-	var bench_item := BENCH_ITEM.instantiate()
-	slot.add_child(bench_item)
+	var bench_item := scene_spawner.spawn_scene(slot)
 	bench_item.item = item
 
 

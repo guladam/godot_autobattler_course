@@ -24,6 +24,11 @@ func _roll_units() -> void:
 		var rarity := player_stats.get_random_rarity_for_level()
 		var new_card := card_spawner.spawn_scene(shop_cards) as UnitCard
 		new_card.unit_stats = unit_pool.get_random_unit_by_rarity(rarity)
+<<<<<<< Updated upstream
+=======
+		new_card.unit_grids = unit_grids
+		new_card.update()
+>>>>>>> Stashed changes
 		new_card.unit_bought.connect(_on_unit_bought)
 
 

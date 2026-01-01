@@ -16,6 +16,20 @@ func update(unique_units: int) -> void:
 	active = trait_data.is_active(unique_units)
 
 
+<<<<<<< Updated upstream
+=======
+func _get_trait_tooltip() -> DetailedTooltip:
+	var new_tooltip := TooltipHandler.DETAILED_TOOLTIP.instantiate() as DetailedTooltip
+	var data := new_tooltip.DetailedTooltipData.new()
+	data.texture = trait_data.icon
+	data.title = trait_data.name
+	data.description = trait_data.description
+	data.min_size_x = 150.0
+	new_tooltip.tooltip_data = data
+	return new_tooltip
+
+
+>>>>>>> Stashed changes
 func _set_trait_data(value: Trait) -> void:
 	trait_data = value
 	

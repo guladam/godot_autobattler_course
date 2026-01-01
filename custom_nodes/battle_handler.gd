@@ -40,7 +40,7 @@ func _add_items(unit: Unit, new_unit: BattleUnit) -> void:
 	new_unit.item_handler.item_removed.connect(_on_battle_unit_item_removed.bind(new_unit))
 	
 	for item: Item in new_unit.item_handler.equipped_items:
-		item.apply_modifiers(new_unit)
+		item.apply_modifiers(new_unit.modifier_handler)
 
 
 func _add_trait_bonuses(new_unit: BattleUnit) -> void:
@@ -58,7 +58,8 @@ func _clean_up_fight() -> void:
 
 
 func _prepare_fight() -> void:
-	get_tree().call_group("units", "hide")
+	for unit: Unit in game_area_unit_grid.get_all_units():
+		unit.hide()
 	
 	for unit_coord: Vector2i in game_area_unit_grid.get_all_occupied_tiles():
 		var unit: Unit = game_area_unit_grid.units[unit_coord]
@@ -107,12 +108,12 @@ func _on_battle_unit_items_changed(unit: Unit, battle_unit: BattleUnit) -> void:
 	battle_unit.item_handler.copy_items_to(unit.item_handler)
 	
 	for item: Item in battle_unit.item_handler.equipped_items:
-		item.remove_modifiers(battle_unit)
-		item.apply_modifiers(battle_unit)
+		item.remove_modifiers(battle_unit.modifier_handler)
+		item.apply_modifiers(battle_unit.modifier_handler)
 
 
 func _on_battle_unit_item_removed(item: Item, battle_unit: BattleUnit) -> void:
-	item.remove_modifiers(battle_unit)
+	item.remove_modifiers(battle_unit.modifier_handler)
 
 
 func _on_game_state_changed() -> void:

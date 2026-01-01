@@ -23,12 +23,12 @@ func equals(other_item: Item) -> bool:
 	return self.id == other_item.id
 
 
-func apply_modifiers(battle_unit: BattleUnit) -> void:
+func apply_modifiers(mod_handler: ModifierHandler) -> void:
 	for type: Modifier.Type in modifiers.keys():
-		var unit_modifier := battle_unit.modifier_handler.get_modifier(type)
+		var unit_modifier := mod_handler.get_modifier(type)
 		var mod_value := modifiers[type]
 		mod_value.source = _get_unique_id()
-		unit_modifier.add_new_value(modifiers[type])
+		unit_modifier.add_new_value(mod_value)
 
 
 # This is overrode by combined items
@@ -36,9 +36,9 @@ func apply_bonus_effect(_battle_unit: BattleUnit) -> void:
 	pass
 
 
-func remove_modifiers(battle_unit: BattleUnit) -> void:
+func remove_modifiers(mod_handler: ModifierHandler) -> void:
 	for type: Modifier.Type in modifiers.keys():
-		var unit_modifier := battle_unit.modifier_handler.get_modifier(type)
+		var unit_modifier := mod_handler.get_modifier(type)
 		unit_modifier.remove_value(_get_unique_id())
 
 

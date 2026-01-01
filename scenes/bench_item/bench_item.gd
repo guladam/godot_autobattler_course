@@ -16,6 +16,20 @@ func _ready() -> void:
 		area_exited.connect(_on_area_exited)
 		drag_and_drop.drag_canceled.connect(_on_drag_canceled)
 		drag_and_drop.dropped.connect(_on_dropped)
+<<<<<<< Updated upstream
+=======
+		input_event.connect(_on_input_event)
+
+
+func _get_tooltip() -> DetailedTooltip:
+	var new_tooltip := TooltipHandler.DETAILED_TOOLTIP.instantiate() as DetailedTooltip
+	var data := new_tooltip.DetailedTooltipData.new()
+	data.texture = packed_sprite_2d.get_texture_as_atlas()
+	data.title = item.name
+	data.description = item.description
+	new_tooltip.tooltip_data = data
+	return new_tooltip
+>>>>>>> Stashed changes
 
 
 func _set_item(new_item: Item) -> void:

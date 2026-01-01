@@ -10,7 +10,7 @@ var target: BattleUnit
 
 
 func _init(new_actor: Node, current_target: BattleUnit) -> void:
-	actor = new_actor
+	super(new_actor)
 	target = current_target
 
 
