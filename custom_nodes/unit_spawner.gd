@@ -10,12 +10,6 @@ signal unit_spawned(unit: Unit)
 @onready var unit_scene_spawner: SceneSpawner = $SceneSpawner
 
 
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("test1"):
-		spawn_unit(preload("uid://dyqvoxv3vg6hp"))
-
-
 func _get_first_available_area() -> PlayArea:
 	var bench_full := bench.unit_grid.is_grid_full()
 	var game_area_full := game_area.unit_grid.is_grid_full()
